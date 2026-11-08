@@ -322,7 +322,16 @@ fbq('init','2018578222100683');fbq('track','PageView');
     var url="https://wa.me/"+WA+"?text="+encodeURIComponent(text);
     var done=false;
     function go(){if(done)return;done=true;location.href=url}
-    track("Lead",{content_name:serv,content_category:origem.value});
+    // mesmo event_id no Pixel (navegador) e na CAPI (servidor) para deduplicar
+    var eid="lead-"+Date.now()+"-"+Math.random().toString(36).slice(2,10);
+    try{fbq("track","Lead",{content_name:serv,content_category:origem.value},{eventID:eid})}catch(_){}
+    function ck(n){var m=document.cookie.match(new RegExp("(?:^|; )"+n+"=([^;]*)"));return m?decodeURIComponent(m[1]):""}
+    try{fetch("/api/capi",{method:"POST",headers:{"Content-Type":"application/json"},keepalive:true,body:JSON.stringify({
+      event_name:"Lead",event_id:eid,event_source_url:location.href.split("#")[0],
+      fbp:ck("_fbp"),fbc:ck("_fbc"),fbclid:qs.get("fbclid")||"",
+      user:{name:nome,phone:f.whatsapp.value.trim()},
+      custom:{content_name:serv,content_category:origem.value,utm_source:qs.get("utm_source")||"",utm_medium:qs.get("utm_medium")||"",utm_campaign:qs.get("utm_campaign")||"",utm_content:qs.get("utm_content")||"",utm_term:qs.get("utm_term")||""}
+    })}).catch(function(){})}catch(_){}
     try{fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData(f)).toString(),keepalive:true}).catch(function(){})}catch(_){}
     setTimeout(go,500);
   });
