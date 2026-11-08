@@ -3,49 +3,94 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RDA Serviços Digitais — Criamos e executamos seu projeto digital</title>
-<meta name="description" content="Setup e consultoria de tráfego, landing pages, sites, criativos, fotos e vídeos com IA. Experts do digital que desenvolvem e entregam rápido.">
+<title>RDA Serviços Digitais — Páginas e estrutura de anúncios para negócios que vendem pelo WhatsApp</title>
+<meta name="description" content="Página para a bio do Instagram, landing page para captar contatos e setup de rastreamento de anúncios. Peça seu orçamento pelo WhatsApp.">
+<script src="https://cadeolead.com.br/tracker.js" data-key="pk_7b4c16f0e1bc4df58dd2acc474d9ac15" data-consent="banner" async></script>
 <style>
-:root{--bg:#0b0d12;--card:#141824;--line:#232a3b;--tx:#f2f4f8;--mut:#9aa4b8;--ac:#22d3a0;--ac2:#6c5ce7}
-@media (prefers-color-scheme: light){:root{--bg:#0b0d12}}
+:root{--bg:#0b0d12;--card:#141824;--line:#232a3b;--tx:#f2f4f8;--mut:#9aa4b8;--ac:#22d3a0;--ac2:#6c5ce7;--hdr:64px}
 *{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:var(--tx);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--tx);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
 .wrap{max-width:1040px;margin:0 auto;padding:0 16px}
-header{padding:16px 0;display:flex;justify-content:space-between;align-items:center}
+a{color:inherit}
+/* header fixo */
+.top{position:sticky;top:0;z-index:20;height:var(--hdr);background:#0b0d12ee;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{height:100%;display:flex;justify-content:space-between;align-items:center}
 .logo{font-weight:800;letter-spacing:.3px}.logo b{color:var(--ac)}
-.btn{display:inline-block;background:var(--ac);color:#04130d;font-weight:700;border:0;border-radius:12px;padding:14px 22px;font-size:16px;cursor:pointer;text-decoration:none}
+.btn{display:inline-block;background:var(--ac);color:#04130d;font-weight:700;border:0;border-radius:12px;padding:14px 22px;font-size:16px;cursor:pointer;text-decoration:none;text-align:center}
 .btn:hover{filter:brightness(1.08)}
-/* hero slider */
-.hero{position:relative;overflow:hidden;border-radius:20px;border:1px solid var(--line);background:radial-gradient(900px 400px at 80% -10%,#6c5ce744,transparent),radial-gradient(700px 400px at 0% 110%,#22d3a033,transparent),var(--card);margin-top:8px}
-.slides{position:relative;min-height:340px}
-.slide{position:absolute;inset:0;padding:40px 28px;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:translateY(18px) scale(.98);transition:opacity .7s ease,transform .7s ease;pointer-events:none}
-.slide.on{opacity:1;transform:none;pointer-events:auto}
+.btn.sm{padding:10px 16px;font-size:14px}
+.btn.ghost{background:transparent;color:var(--tx);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--ac);filter:none}
+/* primeira dobra */
+.hero{position:relative;overflow:hidden;border-radius:20px;border:1px solid var(--line);margin-top:14px;padding:40px 24px 36px;background:var(--card)}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;z-index:0}
+.hero::before{width:380px;height:380px;background:#6c5ce7;right:-120px;top:-140px;animation:fl1 9s ease-in-out infinite alternate}
+.hero::after{width:320px;height:320px;background:#22d3a0;left:-120px;bottom:-160px;animation:fl2 11s ease-in-out infinite alternate}
+@keyframes fl1{to{transform:translate(-40px,50px)}}@keyframes fl2{to{transform:translate(60px,-30px)}}
+@media (prefers-reduced-motion:reduce){.hero::before,.hero::after{animation:none}}
+.hero>*{position:relative;z-index:1}
 .tag{color:var(--ac);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}
-.slide h1,.slide h2{font-size:clamp(28px,5.4vw,52px);line-height:1.08;font-weight:800;max-width:18ch}
-.slide p{color:var(--mut);margin:14px 0 22px;max-width:52ch;font-size:clamp(15px,2vw,18px)}
-.dots{position:absolute;left:28px;bottom:18px;display:flex;gap:8px}
-.dots i{width:28px;height:4px;border-radius:4px;background:var(--line);overflow:hidden;position:relative;cursor:pointer}
-.dots i.on::after{content:"";position:absolute;inset:0;background:var(--ac);transform-origin:left;animation:fill 4.5s linear forwards}
-@keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-.ticker{overflow:hidden;margin:22px 0;border-block:1px solid var(--line);padding:12px 0;mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.ticker div{display:flex;gap:36px;width:max-content;animation:mv 28s linear infinite;color:var(--mut);font-weight:600;white-space:nowrap}
-@keyframes mv{to{transform:translateX(-50%)}}
-h2.sec{font-size:clamp(24px,4vw,34px);margin:44px 0 6px}
+.hero h1{font-size:clamp(28px,6.6vw,50px);line-height:1.1;font-weight:800;max-width:21ch}
+.hero p.lead{color:#c3cadb;margin:16px 0 24px;max-width:56ch;font-size:clamp(16px,2.2vw,19px)}
+.hero .btn{width:100%;max-width:340px}
+@media(min-width:640px){.hero{padding:56px 40px 48px}.hero .btn{width:auto}}
+/* seções */
+section[id]{scroll-margin-top:calc(var(--hdr) + 16px)}
+h2.sec{font-size:clamp(24px,4vw,34px);line-height:1.15;margin:0 0 8px}
 .sub{color:var(--mut);margin-bottom:20px}
-.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
-.card h3{font-size:18px;margin:6px 0}.card p{color:var(--mut);font-size:15px}
-.ico{font-size:26px}
+.offers-head{margin:44px 0 18px}
+.offer{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px 20px;margin-bottom:18px;display:grid;gap:22px}
+.offer .n{display:inline-block;color:#04130d;background:var(--ac);font-weight:800;border-radius:8px;padding:2px 10px;font-size:13px;margin-bottom:10px}
+.offer h3{font-size:clamp(22px,3.6vw,30px);line-height:1.15;margin-bottom:10px}
+.offer p{color:#c3cadb}
+.offer ul{margin:14px 0 18px;padding:0;list-style:none;display:grid;gap:8px}
+.offer li{padding-left:26px;position:relative;color:#dfe4ef}
+.offer li::before{content:"✓";position:absolute;left:0;color:var(--ac);font-weight:800}
+.offer .acts{display:flex;gap:10px;flex-wrap:wrap}
+.offer .acts .btn{flex:1 1 220px}
+@media(min-width:760px){.offer{grid-template-columns:1.2fr .8fr;padding:32px;align-items:center}}
+.fyi{font-size:13px;color:var(--mut);margin-top:12px}
+/* celular */
+.phone{width:min(250px,70vw);margin:0 auto;border:8px solid #2a3042;border-radius:34px;background:#000;overflow:hidden;box-shadow:0 20px 50px #0008;aspect-ratio:390/780;position:relative}
+.phone img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.phone::before{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);width:70px;height:6px;border-radius:6px;background:#2a3042;z-index:2}
+.prevwrap{display:grid;gap:12px;justify-items:center}
+.prevwrap a{color:var(--ac);font-weight:700;text-decoration:none}
+.prevwrap a:hover{text-decoration:underline}
+/* mini esquema da landing */
+.schema{background:#0e121b;border:1px solid var(--line);border-radius:18px;padding:16px;display:grid;gap:8px;width:min(260px,80vw);margin:0 auto}
+.schema div{border-radius:10px;padding:10px 12px;font-size:13px;font-weight:600;border:1px dashed var(--line);color:var(--mut)}
+.schema .b1{background:#22d3a01f;border-color:#22d3a055;color:var(--tx)}
+.schema .b4{background:var(--ac);color:#04130d;border:0;text-align:center}
+.schema small{display:block;text-align:center;color:var(--mut);font-size:12px;margin-top:2px}
+/* comparação */
+.diff{display:grid;gap:12px;margin:0 0 18px}
+.diff .c{background:#0e121b;border:1px solid var(--line);border-radius:16px;padding:16px}
+.diff .c b{color:var(--ac);display:block;margin-bottom:4px}
+.diff .c span{color:#c3cadb;font-size:15px}
+@media(min-width:700px){.diff{grid-template-columns:1fr 1fr}}
+/* extras */
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.card h3{font-size:17px;margin:6px 0}.card p{color:var(--mut);font-size:14px}
+.card .btn{margin-top:12px;width:100%}
+.ico{font-size:24px}
+.more{text-align:center;margin:26px 0 8px;color:var(--mut)}
+.more b{color:var(--tx);display:block;font-size:20px;margin-bottom:12px}
 /* form */
-.form{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;margin:44px 0;display:grid;gap:14px;max-width:560px;margin-inline:auto}
+.form{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;margin:36px auto;display:grid;gap:14px;max-width:560px}
 .form h2{font-size:26px}
+.chip{display:inline-block;background:#22d3a01f;color:var(--ac);border:1px solid #22d3a055;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700;justify-self:start}
 label{display:grid;gap:6px;font-size:14px;color:var(--mut)}
 input,select{background:#0e121b;color:var(--tx);border:1px solid var(--line);border-radius:12px;padding:14px;font-size:16px;width:100%}
 input:focus,select:focus{outline:2px solid var(--ac);border-color:transparent}
 .note{font-size:13px;color:var(--mut);text-align:center}
-footer{color:var(--mut);font-size:13px;text-align:center;padding:30px 0 50px}
 .hp{position:absolute;left:-9999px}
-@media (prefers-reduced-motion:reduce){.slide,.ticker div,.dots i.on::after{transition:none;animation:none}.dots i.on::after{transform:none}}
+.geral{text-align:center;color:var(--mut);margin-bottom:10px}
+.geral a{color:var(--ac);font-weight:700}
+footer{color:var(--mut);font-size:13px;text-align:center;padding:30px 0 50px}
 </style>
 
 <!-- Meta Pixel (Serviços) -->
@@ -56,114 +101,203 @@ fbq('init','2018578222100683');fbq('track','PageView');
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2018578222100683&ev=PageView&noscript=1"></noscript>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div class="logo">RDA <b>Serviços Digitais</b></div>
-    <a class="btn" href="#contato">Quero orçamento</a>
-  </header>
+<header class="top"><div class="wrap">
+  <div class="logo">RDA <b>Serviços Digitais</b></div>
+  <a class="btn sm" href="#contato" data-service="geral">Pedir orçamento</a>
+</div></header>
 
-  <section class="hero" aria-label="O que produzimos">
-    <div class="slides" id="slides">
-      <div class="slide on" data-k="geral">
-        <div class="tag">Experts do digital</div>
-        <h1>Produzimos e executamos diversos produtos digitais.</h1>
-        <p>Você diz o que precisa. A gente desenvolve, entrega e ainda orienta o próximo passo.</p>
-        <a class="btn" href="#contato" style="width:max-content">Falar com um expert</a>
-      </div>
-      <div class="slide" data-k="trafego">
-        <div class="tag">Setup e consultoria de tráfego</div>
-        <h2>Sua conta de anúncios configurada do jeito certo.</h2>
-        <p>Estrutura de campanhas, pixel, conversões e consultoria para você investir sem jogar dinheiro fora.</p>
-        <a class="btn" href="#contato" style="width:max-content">Quero estruturar</a>
-      </div>
-      <div class="slide" data-k="sites">
-        <div class="tag">Landing pages e sites</div>
-        <h2>Seu site ou página de vendas no ar, rápido.</h2>
-        <p>Design moderno, rápido no celular e pensado para transformar visita em cliente.</p>
-        <a class="btn" href="#contato" style="width:max-content">Quero meu site</a>
-      </div>
-      <div class="slide" data-k="criativos">
-        <div class="tag">Criativos para tráfego</div>
-        <h2>Anúncios que param o dedo na tela.</h2>
-        <p>Imagens e vídeos de anúncio criados para atrair clique e gerar contato.</p>
-        <a class="btn" href="#contato" style="width:max-content">Quero criativos</a>
-      </div>
-      <div class="slide" data-k="fotos-ia">
-        <div class="tag">Fotos com IA</div>
-        <h2>Fotos profissionais sem estúdio e sem espera.</h2>
-        <p>Produto, retrato ou campanha: imagens com qualidade de ensaio, geradas com IA.</p>
-        <a class="btn" href="#contato" style="width:max-content">Quero fotos com IA</a>
-      </div>
-      <div class="slide" data-k="videos-ia">
-        <div class="tag">Vídeos com IA</div>
-        <h2>Vídeos que chamam atenção, prontos para postar.</h2>
-        <p>Do roteiro ao vídeo final, produzidos com IA para anúncios, redes e apresentações.</p>
-        <a class="btn" href="#contato" style="width:max-content">Quero vídeos com IA</a>
-      </div>
-    </div>
-    <div class="dots" id="dots"></div>
+<main class="wrap">
+  <section class="hero" id="topo" aria-labelledby="h1">
+    <div class="tag">RDA Serviços Digitais</div>
+    <h1 id="h1">Páginas e estrutura de anúncios para negócios que vendem pelo WhatsApp</h1>
+    <p class="lead">Criamos páginas para a bio do Instagram, landing pages para captar contatos e configuramos suas campanhas para você medir os resultados.</p>
+    <a class="btn" href="#ofertas" data-track="ver-servicos">Ver os serviços</a>
   </section>
 
-  <div class="ticker" aria-hidden="true"><div>
-    <span>Setup de tráfego</span><span>•</span><span>Consultoria</span><span>•</span><span>Landing pages</span><span>•</span><span>Sites</span><span>•</span><span>Criativos</span><span>•</span><span>Fotos com IA</span><span>•</span><span>Vídeos com IA</span><span>•</span>
-    <span>Setup de tráfego</span><span>•</span><span>Consultoria</span><span>•</span><span>Landing pages</span><span>•</span><span>Sites</span><span>•</span><span>Criativos</span><span>•</span><span>Fotos com IA</span><span>•</span><span>Vídeos com IA</span><span>•</span>
-  </div></div>
-
-  <h2 class="sec">Você não precisa saber fazer. Só precisa pedir.</h2>
-  <p class="sub">Cuidamos de tudo, do briefing à entrega.</p>
-  <div class="grid">
-    <div class="card"><div class="ico">⚡</div><h3>Entrega rápida</h3><p>Processo enxuto e experiência prática: seu projeto sai do papel em dias, não em meses.</p></div>
-    <div class="card"><div class="ico">🎯</div><h3>Foco em resultado</h3><p>Tudo pensado para gerar contatos, vendas e presença profissional.</p></div>
-    <div class="card"><div class="ico">🤝</div><h3>Atendimento direto</h3><p>Você fala com quem executa, pelo WhatsApp, sem burocracia.</p></div>
-    <div class="card"><div class="ico">🧩</div><h3>E tudo mais que você imaginar</h3><p>Não achou o que precisa? Conte a ideia, a gente avalia e entrega.</p></div>
+  <div class="offers-head" id="ofertas">
+    <h2 class="sec">Três formas de a gente te ajudar</h2>
+    <p class="sub">Escolha a que combina com o seu momento. Se tiver dúvida, fale com a gente.</p>
   </div>
 
+  <!-- A. Página para a bio -->
+  <section class="offer" id="pagina-bio" aria-labelledby="t-bio">
+    <div>
+      <span class="n">1</span>
+      <h3 id="t-bio">Seus serviços, trabalhos e contato em um só link na bio.</h3>
+      <p>É uma página que apresenta o seu negócio como um todo: quem você é, o que faz e como falar com você. Tem visual personalizado para o celular e acesso direto ao seu WhatsApp.</p>
+      <ul>
+        <li>Visual personalizado para celular</li>
+        <li>Apresentação completa do negócio</li>
+        <li>Acesso ao WhatsApp</li>
+      </ul>
+      <div class="acts">
+        <a class="btn" href="#contato" data-service="pagina-bio">Quero minha página para a bio</a>
+      </div>
+    </div>
+    <div class="prevwrap">
+      <div class="phone"><img src="assets/case-ludmilla.jpg" alt="Prévia da página da corretora Ludmilla no celular" width="390" height="780" loading="lazy"></div>
+      <a href="https://ludmillaimoveis.netlify.app/" target="_blank" rel="noopener" data-track="ver-pagina-real">Ver página real ↗</a>
+      <span class="fyi">Exemplo real: página da corretora Ludmilla.</span>
+    </div>
+  </section>
+
+  <!-- B. Landing page -->
+  <section class="offer" id="landing-page" aria-labelledby="t-lp">
+    <div>
+      <span class="n">2</span>
+      <h3 id="t-lp">Uma página para transformar o interesse no anúncio em contato.</h3>
+      <p>É uma página dedicada a <b>uma oferta específica</b>. Ela apresenta o serviço, responde as dúvidas mais comuns e leva a pessoa ao WhatsApp ou a um formulário, conforme o seu projeto.</p>
+      <ul>
+        <li>Foco em uma única oferta</li>
+        <li>Seções para apresentar o serviço e tirar dúvidas</li>
+        <li>Direcionamento ao WhatsApp ou formulário</li>
+      </ul>
+      <div class="acts">
+        <a class="btn" href="#contato" data-service="landing-page">Quero uma landing page</a>
+      </div>
+    </div>
+    <div class="schema" aria-label="Estrutura de uma landing page">
+      <div class="b1">Sua oferta, em destaque</div>
+      <div>Como funciona</div>
+      <div>Dúvidas frequentes</div>
+      <div class="b4">Falar no WhatsApp</div>
+      <small>Estrutura de uma landing page</small>
+    </div>
+  </section>
+
+  <!-- diferença -->
+  <div class="diff" aria-label="Qual a diferença entre as duas páginas">
+    <div class="c"><b>Página da bio</b><span>Apresenta o negócio inteiro: quem você é, o que faz e como chamar. Serve de cartão de visitas no Instagram.</span></div>
+    <div class="c"><b>Landing page</b><span>Apresenta uma oferta específica. Serve para quem clicou no seu anúncio e precisa decidir pedir contato.</span></div>
+  </div>
+
+  <!-- C. Setup -->
+  <section class="offer" id="setup-trafego" aria-labelledby="t-st" style="grid-template-columns:1fr">
+    <div>
+      <span class="n">3</span>
+      <h3 id="t-st">Sua conta de anúncios organizada e com conversões rastreadas.</h3>
+      <p>Serviço pontual para quem vai começar a anunciar ou precisa organizar uma conta que já existe, para saber de onde vêm os contatos.</p>
+      <ul>
+        <li>Estrutura de campanhas</li>
+        <li>Configuração de eventos de conversão</li>
+        <li>Teste de conversão</li>
+      </ul>
+      <div class="acts">
+        <a class="btn" href="#contato" data-service="setup-trafego" style="max-width:380px">Quero configurar meu tráfego</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- complementares -->
+  <section id="complementares" style="margin-top:40px">
+    <h2 class="sec">Também fazemos</h2>
+    <p class="sub">Serviços para completar o seu projeto.</p>
+    <div class="grid">
+      <div class="card"><div class="ico">🎨</div><h3>Criativos para tráfego</h3><p>Imagens e vídeos de anúncio.</p><a class="btn ghost sm" href="#contato" data-service="criativos">Pedir orçamento</a></div>
+      <div class="card"><div class="ico">📸</div><h3>Fotos com IA</h3><p>Fotos profissionais geradas com inteligência artificial.</p><a class="btn ghost sm" href="#contato" data-service="fotos-ia">Pedir orçamento</a></div>
+      <div class="card"><div class="ico">🎬</div><h3>Vídeos com IA</h3><p>Vídeos para anúncios e redes sociais.</p><a class="btn ghost sm" href="#contato" data-service="videos-ia">Pedir orçamento</a></div>
+    </div>
+    <div class="more"><b>Tem outro projeto em mente? Conta pra gente</b><a class="btn" href="#contato" data-service="outro">Contar meu projeto</a></div>
+  </section>
+
+  <!-- contato -->
   <form class="form" id="contato" name="lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
-    <h2>Conte o que você precisa</h2>
+    <h2>Peça seu orçamento</h2>
+    <span class="chip" id="chip" hidden></span>
     <p class="sub" style="margin:0">Responda em 10 segundos e a conversa continua no WhatsApp.</p>
     <input type="hidden" name="form-name" value="lead">
     <input type="hidden" name="origem" id="origem" value="geral">
+    <input type="hidden" name="utm_source" id="utm_source">
+    <input type="hidden" name="utm_medium" id="utm_medium">
+    <input type="hidden" name="utm_campaign" id="utm_campaign">
+    <input type="hidden" name="utm_content" id="utm_content">
+    <input type="hidden" name="utm_term" id="utm_term">
+    <input type="hidden" name="fbclid" id="fbclid">
+    <input type="hidden" name="pagina" id="pagina">
     <p class="hp"><label>Não preencha <input name="bot-field"></label></p>
     <label>Seu nome<input name="nome" id="nome" autocomplete="name" required placeholder="Como podemos te chamar?"></label>
     <label>Serviço que você precisa
       <select name="servico" id="servico" required>
         <option value="">Selecione…</option>
-        <option>Setup e consultoria de tráfego pago</option>
-        <option>Landing page ou site</option>
-        <option>Criativos para tráfego</option>
-        <option>Fotos com IA</option>
-        <option>Vídeos com IA</option>
-        <option>Outro / quero conversar</option>
+        <option value="Página profissional para a bio do Instagram">Página para a bio do Instagram</option>
+        <option value="Landing page para captar contatos">Landing page para captar contatos</option>
+        <option value="Setup e rastreamento de anúncios">Setup e rastreamento de anúncios</option>
+        <option value="Criativos para tráfego">Criativos para tráfego</option>
+        <option value="Fotos com IA">Fotos com IA</option>
+        <option value="Vídeos com IA">Vídeos com IA</option>
+        <option value="Outro projeto">Outro projeto / quero conversar</option>
       </select>
     </label>
     <label>Seu WhatsApp<input name="whatsapp" id="whatsapp" type="tel" inputmode="tel" autocomplete="tel" required placeholder="(11) 99999-9999"></label>
     <button class="btn" type="submit" id="send">Continuar no WhatsApp</button>
     <p class="note" id="msg">Sem compromisso. Seus dados são usados só para este contato.</p>
   </form>
+  <p class="geral">Prefere falar direto? <a href="https://wa.me/5511991912707?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20RDA%20Servi%C3%A7os%20Digitais." target="_blank" rel="noopener" id="wa-geral">Chamar no WhatsApp</a></p>
 
   <footer>© RDA Serviços Digitais</footer>
-</div>
+</main>
 
 <script>
 (function(){
   var WA="5511991912707";
-  var slides=[].slice.call(document.querySelectorAll(".slide"));
-  var dots=document.getElementById("dots"),i=0,timer;
-  slides.forEach(function(_,n){var d=document.createElement("i");d.onclick=function(){go(n,true)};dots.appendChild(d)});
-  function go(n,manual){
-    i=n;slides.forEach(function(s,k){s.classList.toggle("on",k===n)});
-    [].forEach.call(dots.children,function(d,k){d.classList.remove("on");if(k===n){void d.offsetWidth;d.classList.add("on")}});
-    clearTimeout(timer);timer=setTimeout(function(){go((i+1)%slides.length)},4500);
-  }
-  // tema vindo do anúncio: ?s=trafego|sites|criativos|fotos-ia|videos-ia
-  var s=new URLSearchParams(location.search).get("s");
-  var map={trafego:"Setup e consultoria de tráfego pago",sites:"Landing page ou site",criativos:"Criativos para tráfego","fotos-ia":"Fotos com IA","videos-ia":"Vídeos com IA"};
-  var start=0;
-  slides.forEach(function(el,k){if(s&&el.dataset.k===s)start=k});
-  if(s&&map[s]){document.getElementById("servico").value=map[s];document.getElementById("origem").value=s}
-  go(start);
+  var SV={
+    "pagina-bio":"Página profissional para a bio do Instagram",
+    "landing-page":"Landing page para captar contatos",
+    "setup-trafego":"Setup e rastreamento de anúncios",
+    "criativos":"Criativos para tráfego",
+    "fotos-ia":"Fotos com IA",
+    "videos-ia":"Vídeos com IA",
+    "outro":"Outro projeto"
+  };
+  // compatibilidade com links antigos (?s=)
+  var LEGACY={trafego:"setup-trafego",sites:"landing-page"};
+  var f=document.getElementById("contato"),sel=document.getElementById("servico"),chip=document.getElementById("chip"),
+      origem=document.getElementById("origem"),btn=document.getElementById("send"),msg=document.getElementById("msg");
+  var qs=new URLSearchParams(location.search);
 
-  var f=document.getElementById("contato"),btn=document.getElementById("send"),msg=document.getElementById("msg");
+  function track(name,data,custom){try{custom?fbq("trackCustom",name,data):fbq("track",name,data)}catch(_){}}
+  function setService(k){
+    if(!SV[k]){origem.value="geral";return}
+    sel.value=SV[k];origem.value=k;chip.textContent="Serviço: "+SV[k];chip.hidden=false;
+  }
+
+  // parâmetros de campanha
+  ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","fbclid"].forEach(function(p){
+    var el=document.getElementById(p);if(el&&qs.get(p))el.value=qs.get(p);
+  });
+  document.getElementById("pagina").value=location.pathname+location.hash;
+
+  // serviço pela âncora (#pagina-bio etc.) ou pelo ?s= legado
+  function fromHash(){
+    var h=(location.hash||"").slice(1);
+    if(SV[h]&&h!=="outro")return h;
+    return null;
+  }
+  var legacy=qs.get("s");legacy=LEGACY[legacy]||legacy;
+  var k0=fromHash()||(SV[legacy]?legacy:null);
+  if(k0){setService(k0);track("OfferView",{service:k0},true)}
+  // garante o ajuste de rolagem depois que imagens/fontes carregam
+  window.addEventListener("load",function(){
+    var h=(location.hash||"").slice(1),el=h&&document.getElementById(h);
+    if(el&&h!=="contato")setTimeout(function(){el.scrollIntoView()},120);
+  });
+  window.addEventListener("hashchange",function(){var k=fromHash();if(k){setService(k)}});
+
+  // CTAs: seleciona o serviço e leva ao formulário
+  document.querySelectorAll("[data-service]").forEach(function(a){
+    a.addEventListener("click",function(){
+      var k=a.getAttribute("data-service");
+      if(k==="geral"){sel.value="";origem.value="geral";chip.hidden=true}else setService(k);
+      track("CTAClick",{service:k},true);
+      setTimeout(function(){try{document.getElementById("nome").focus({preventScroll:true})}catch(_){}},600);
+    });
+  });
+  document.querySelectorAll("[data-track]").forEach(function(a){
+    a.addEventListener("click",function(){track("LinkClick",{link:a.getAttribute("data-track")},true)});
+  });
+  // clique no WhatsApp geral (separado do envio do formulário)
+  document.getElementById("wa-geral").addEventListener("click",function(){track("WhatsAppClick",{service:"geral"},true)});
+
   f.addEventListener("submit",function(e){
     e.preventDefault();
     var nome=f.nome.value.trim(),serv=f.servico.value,tel=f.whatsapp.value.replace(/\D/g,"");
@@ -172,11 +306,10 @@ fbq('init','2018578222100683');fbq('track','PageView');
     var text="Olá! Sou "+nome+". Preciso de: "+serv+". Meu WhatsApp: "+f.whatsapp.value.trim();
     var url="https://wa.me/"+WA+"?text="+encodeURIComponent(text);
     var done=false;
-    function go2(){if(done)return;done=true;location.href=url}
-    try{fbq("track","Lead",{content_name:serv,content_category:f.origem.value})}catch(_){}
-    // registra o lead no Netlify Forms (backup) e segue para o WhatsApp
+    function go(){if(done)return;done=true;location.href=url}
+    track("Lead",{content_name:serv,content_category:origem.value});
     try{fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData(f)).toString(),keepalive:true}).catch(function(){})}catch(_){}
-    setTimeout(go2,500);
+    setTimeout(go,500);
   });
 })();
 </script>
