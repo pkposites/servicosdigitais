@@ -1,0 +1,66 @@
+<!doctype html><html lang="pt-BR"><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0b0d12;font-family:Inter,system-ui,sans-serif;color:#f2f4f8}
+#bg{position:absolute;inset:0}
+.blob{position:absolute;border-radius:50%;filter:blur(120px);opacity:.55}
+.scene{position:absolute;inset:0;padding:120px 80px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;opacity:0}
+.tag{color:#22d3a0;font-weight:800;font-size:38px;letter-spacing:6px;text-transform:uppercase;margin-bottom:34px}
+h1{font-size:112px;line-height:1.04;font-weight:900;letter-spacing:-2px}
+h2{font-size:92px;line-height:1.06;font-weight:900;letter-spacing:-1px}
+p.s{font-size:48px;color:#aab3c7;margin-top:36px;line-height:1.3;max-width:900px}
+.g{color:#22d3a0}.v{color:#a29bfe}
+.logo{font-size:64px;font-weight:900;margin-bottom:40px}
+.card{width:100%;background:#141824;border:2px solid #232a3b;border-radius:48px;padding:70px 56px}
+.ico{font-size:170px;line-height:1;margin-bottom:30px}
+.prog{position:absolute;left:0;bottom:0;height:12px;background:#22d3a0}
+.steps{display:grid;gap:26px;width:100%;margin-top:50px}
+.st{display:flex;align-items:center;gap:36px;background:#141824;border:2px solid #232a3b;border-radius:36px;padding:38px 40px;font-size:56px;font-weight:800}
+.st b{width:96px;height:96px;border-radius:50%;background:#22d3a0;color:#04130d;display:grid;place-items:center;font-size:52px;flex:none}
+.cta{display:inline-block;background:#22d3a0;color:#04130d;font-weight:900;font-size:60px;padding:40px 52px;white-space:nowrap;border-radius:40px;margin-top:56px}
+.url{margin-top:36px;font-size:44px;color:#aab3c7}
+</style>
+<div id="bg"><div class="blob" id="b1" style="width:900px;height:900px;background:#6c5ce7;left:-300px;top:-100px"></div><div class="blob" id="b2" style="width:800px;height:800px;background:#22d3a0;right:-300px;bottom:-100px"></div></div>
+
+<div class="scene" data-s="0" data-e="4.6"><div class="tag">Atenção</div>
+<h1 class="in" data-d="0.1">Precisa de um site, anúncios ou conteúdo…</h1>
+<h1 class="in g" data-d="1.6" style="margin-top:40px">e não sabe por onde começar?</h1></div>
+
+<div class="scene" data-s="4.6" data-e="9.6"><div class="logo in" data-d="0.1">RDA <span class="g">Serviços Digitais</span></div>
+<h2 class="in" data-d="0.6">Produzimos e executamos <span class="g">diversos produtos digitais.</span></h2>
+<p class="s in" data-d="1.8">Experts do digital, do briefing à entrega.</p></div>
+
+<div class="scene sv" data-s="9.6" data-e="12.4"><div class="card in" data-d="0.05"><div class="ico">🎯</div><div class="tag">Serviço 1</div><h2>Setup e consultoria de <span class="g">tráfego</span></h2><p class="s">Conta, pixel e campanhas configurados do jeito certo.</p></div></div>
+<div class="scene sv" data-s="12.4" data-e="15.2"><div class="card in" data-d="0.05"><div class="ico">💻</div><div class="tag">Serviço 2</div><h2>Landing pages e <span class="g">sites</span></h2><p class="s">No ar rápido, bonito no celular e feito para vender.</p></div></div>
+<div class="scene sv" data-s="15.2" data-e="18"><div class="card in" data-d="0.05"><div class="ico">🎨</div><div class="tag">Serviço 3</div><h2>Criativos para <span class="g">anúncios</span></h2><p class="s">Imagens e vídeos que fazem parar de rolar a tela.</p></div></div>
+<div class="scene sv" data-s="18" data-e="20.8"><div class="card in" data-d="0.05"><div class="ico">📸</div><div class="tag">Serviço 4</div><h2>Fotos com <span class="g">IA</span></h2><p class="s">Qualidade de ensaio profissional, sem estúdio.</p></div></div>
+<div class="scene sv" data-s="20.8" data-e="23.6"><div class="card in" data-d="0.05"><div class="ico">🎬</div><div class="tag">Serviço 5</div><h2>Vídeos com <span class="g">IA</span></h2><p class="s">Do roteiro ao vídeo final, pronto para postar.</p></div></div>
+
+<div class="scene" data-s="23.6" data-e="28.6"><div class="tag">Simples assim</div><h2 class="in" data-d="0.1">Você conta a ideia. <span class="g">A gente entrega.</span></h2>
+<div class="steps"><div class="st in" data-d="0.9"><b>1</b>Você conta o que precisa</div><div class="st in" data-d="1.7"><b>2</b>Nós desenvolvemos</div><div class="st in" data-d="2.5"><b>3</b>Entregamos rápido</div></div></div>
+
+<div class="scene" data-s="28.6" data-e="34"><div class="logo in" data-d="0.1">RDA <span class="g">Serviços Digitais</span></div>
+<h1 class="in" data-d="0.4">Fale com um <span class="g">expert</span> agora.</h1>
+<p class="s in" data-d="1.3">Preencha 3 campos e continue no WhatsApp.</p>
+<div class="cta in" data-d="2" id="cta">Quero meu orçamento →</div>
+<div class="url in" data-d="2.4">servicos-digitais.netlify.app</div></div>
+<div class="prog" id="prog"></div>
+<script>
+const ease=x=>1-Math.pow(1-x,3), cl=x=>Math.max(0,Math.min(1,x));
+window.render=function(t){
+  document.getElementById('b1').style.transform=`translate(${Math.sin(t/4)*80}px,${t*12}px)`;
+  document.getElementById('b2').style.transform=`translate(${Math.cos(t/5)*80}px,${-t*10}px)`;
+  document.querySelectorAll('.scene').forEach(s=>{
+    const a=+s.dataset.s,b=+s.dataset.e,l=t-a;
+    let o=0; if(t>=a&&t<b){o=Math.min(cl(l/.35),cl((b-t)/.35))}
+    s.style.opacity=o;
+    s.querySelectorAll('.in').forEach(e=>{
+      const p=ease(cl((l-(+e.dataset.d))/.6));
+      e.style.opacity=p; e.style.transform=`translateY(${(1-p)*60}px) scale(${.96+.04*p})`;
+    });
+  });
+  const c=document.getElementById('cta'); if(t>30.6){c.style.boxShadow=`0 0 ${40+30*Math.sin((t-30.6)*6)}px #22d3a0aa`}
+  document.getElementById('prog').style.width=(t/34*100)+'%';
+};
+render(0);
+</script></html>
