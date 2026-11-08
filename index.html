@@ -11,6 +11,9 @@ fbq('init','2018578222100683');fbq('track','PageView');
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RDA Serviços Digitais — Páginas, anúncios e criativos para o seu negócio</title>
 <meta name="description" content="Página para a bio do Instagram, landing page, configuração de anúncios e artes e vídeos para divulgar sua oferta. Peça seu orçamento pelo WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&display=swap">
 <script src="https://cadeolead.com.br/tracker.js" data-key="pk_7b4c16f0e1bc4df58dd2acc474d9ac15" data-consent="banner" async></script>
 <style>
 :root{--bg:#0a0c10;--s1:#10141b;--s2:#161b25;--line:#222937;--tx:#f4f6fa;--tx2:#b9c2d3;--ac:#22d3a0;--hdr:60px}
@@ -24,7 +27,10 @@ img,video{max-width:100%}
 /* cabeçalho */
 .top{position:sticky;top:0;z-index:20;height:var(--hdr);background:#0a0c10ee;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .top .wrap{height:100%;display:flex;justify-content:space-between;align-items:center}
-.logo{font-weight:800}.logo b{color:var(--ac)}
+.logo{font-weight:800;line-height:1.15}.logo b{color:var(--ac)}
+.brand{display:flex;flex-direction:column;gap:1px;min-width:0}
+.tag{font-family:"Cormorant Garamond","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-style:italic;font-weight:500;font-size:15px;line-height:1.15;color:var(--tx2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.1px}
+@media(min-width:720px){.brand{flex-direction:row;align-items:baseline;gap:14px}.brand .tag{font-size:17px;padding-left:14px;border-left:1px solid #ffffff2a}}
 .btn{display:inline-block;background:var(--ac);color:#04130d;font-weight:700;border:0;border-radius:12px;padding:15px 24px;font-size:16px;cursor:pointer;text-decoration:none;text-align:center;transition:filter .15s}
 .btn:hover{filter:brightness(1.08)}
 .btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #fff;outline-offset:2px}
@@ -73,6 +79,8 @@ main,footer{position:relative;z-index:1}
 #configuracao-anuncios{--c:#0e3528}
 #artes-e-videos{--c:#301640}
 .more-sec{--c:#18202e}
+/* linha fina entre os blocos */
+.band:not(.hero)::after{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#ffffff30 18%,#ffffff30 82%,transparent)}
 /* seções */
 section[id],.alias{scroll-margin-top:calc(var(--hdr) + 12px)}
 .alias{display:block;height:0}
@@ -164,7 +172,7 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
 </head>
 <body>
 <header class="top"><div class="wrap">
-  <div class="logo">RDA <b>Serviços Digitais</b></div>
+  <div class="brand"><div class="logo">RDA <b>Serviços Digitais</b></div><div class="tag">Tirando seu projeto do papel, te ajudando a ir além.</div></div>
 </div></header>
 
 <main class="wrap">
