@@ -112,6 +112,10 @@ input,select{background:#0b0e14;color:var(--tx);border:1px solid #3a4357;border-
 input::placeholder{color:#8792a7}
 input:focus,select:focus{border-color:var(--ac);outline:3px solid #22d3a066;outline-offset:0}
 .form .btn{padding:17px 24px;font-size:17px;width:100%}
+.consent{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:13.5px;line-height:1.45;color:var(--tx2);cursor:pointer}
+.consent input{width:22px;height:22px;flex:none;margin-top:1px;accent-color:#22d3a0;padding:0}
+.consent a{color:var(--ac);text-decoration:underline;text-underline-offset:3px}
+.consent.err{color:#ffb3b3}
 .note{font-size:13px;color:var(--tx2);text-align:center}
 .hp{position:absolute;left:-9999px}
 .alt{text-align:center;color:var(--tx2);font-size:14.5px;margin-bottom:6px}
@@ -283,6 +287,7 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
     <input type="hidden" name="utm_term" id="utm_term">
     <input type="hidden" name="fbclid" id="fbclid">
     <input type="hidden" name="pagina" id="pagina">
+    <input type="hidden" name="consentimento" id="consentimento">
     <p class="hp"><label>Não preencha <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
     <label>Seu nome<input name="nome" id="nome" autocomplete="name" required placeholder="Como podemos te chamar?"></label>
     <label>Serviço que você precisa
@@ -298,11 +303,10 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
       </select>
     </label>
     <label>Seu WhatsApp<input name="whatsapp" id="whatsapp" type="tel" inputmode="tel" autocomplete="tel" required placeholder="(11) 99999-9999"></label>
+    <label class="consent"><input type="checkbox" id="aceite" name="aceite" required><span>Concordo em compartilhar meu nome, telefone e o serviço de interesse com a RDA Serviços Digitais para ser atendido pelo WhatsApp, e que seja registrado de qual anúncio vim. <a href="https://cadeolead.com.br/privacidade/pk_7b4c16f0e1bc4df58dd2acc474d9ac15" target="_blank" rel="noopener">Política de privacidade</a></span></label>
     <button class="btn" type="submit" id="send">Continuar no WhatsApp</button>
-    <p class="note" id="msg" role="status">Sem compromisso. Seus dados são usados só para este contato.</p>
+    <p class="note" id="msg" role="status">Sem compromisso. Você só fala com a gente depois de aceitar o compartilhamento dos dados.</p>
   </form>
-  <p class="alt">Prefere falar direto? <a href="https://wa.me/5511991912707?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20RDA%20Servi%C3%A7os%20Digitais." target="_blank" rel="noopener" id="wa-geral">Chamar no WhatsApp</a></p>
-
   <footer>© RDA Serviços Digitais</footer>
 </main>
 
@@ -366,16 +370,38 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
   document.querySelectorAll("[data-track]").forEach(function(a){
     a.addEventListener("click",function(){track("LinkClick",{link:a.getAttribute("data-track")},true)});
   });
-  document.getElementById("wa-geral").addEventListener("click",function(){track("WhatsAppClick",{service:"geral"},true)});
+
+  var aceite=document.getElementById("aceite"),aceiteBox=aceite.parentNode;
+  function lh(fn){try{if(window.LeadHub)return fn(window.LeadHub)}catch(_){}}
+  // Marcar o aceite libera o registro completo no Cadê o Lead (origem do anúncio),
+  // sem sobrescrever quem já recusou os cookies no banner.
+  aceite.addEventListener("change",function(){
+    if(aceite.checked){aceiteBox.classList.remove("err");msg.textContent="";lh(function(L){if(L.consentStatus&&L.consentStatus()==="pending")L.consent(true)})}
+  });
+  function dadosValidos(){
+    var nome=f.nome.value.trim(),serv=f.servico.value,tel=f.whatsapp.value.replace(/\D/g,"");
+    if(nome.length<2||!serv||tel.length<10){msg.textContent="Preencha nome, serviço e um WhatsApp válido.";msg.style.color="#ff9b9b";return false}
+    if(!aceite.checked){aceiteBox.classList.add("err");msg.textContent="Para falar com a gente, aceite o compartilhamento dos dados.";msg.style.color="#ffb3b3";try{aceite.focus()}catch(_){}return false}
+    return true;
+  }
+  // Barra o envio ANTES do rastreador: sem dados válidos e sem aceite, nada é registrado.
+  window.addEventListener("submit",function(e){
+    if(e.target===f&&!dadosValidos()){e.preventDefault();e.stopImmediatePropagation()}
+  },true);
 
   f.addEventListener("submit",function(e){
     e.preventDefault();
-    var nome=f.nome.value.trim(),serv=f.servico.value,tel=f.whatsapp.value.replace(/\D/g,"");
-    if(nome.length<2||!serv||tel.length<10){msg.textContent="Preencha nome, serviço e um WhatsApp válido.";msg.style.color="#ff9b9b";return}
-    if(btn.disabled)return;
+    if(!dadosValidos()||btn.disabled)return;
+    var nome=f.nome.value.trim(),serv=f.servico.value;
     btn.disabled=true;btn.textContent="Abrindo WhatsApp…";
+    document.getElementById("consentimento").value="aceito em "+new Date().toISOString();
     var text="Olá! Sou "+nome+". Preciso de: "+serv+". Meu WhatsApp: "+f.whatsapp.value.trim();
     var url="https://wa.me/"+WA+"?text="+encodeURIComponent(text);
+    // Cadê o Lead: contato, serviço e aceite vão junto com o clique, e a mensagem ganha o código do atendimento
+    lh(function(L){
+      L.identify({name:nome,phone:f.whatsapp.value.trim()});
+      url=L.whatsappUrl(url,{servico:serv,oferta:origem.value,consentimento_dados:"aceito"});
+    });
     var done=false;
     function go(){if(done)return;done=true;location.href=url}
     // mesmo event_id no Pixel (navegador) e na CAPI (servidor) para deduplicar
