@@ -59,6 +59,9 @@ h2.sec{font-size:clamp(24px,4vw,34px);line-height:1.15;margin:0 0 8px}
 .prevwrap{display:grid;gap:12px;justify-items:center}
 .prevwrap a{color:var(--ac);font-weight:700;text-decoration:none}
 .prevwrap a:hover{text-decoration:underline}
+/* ilustrações */
+.art{width:min(280px,72vw);border-radius:18px;border:1px solid var(--line);display:block;margin:0 auto;height:auto}
+.card .art{width:100%;margin:0 0 10px}
 /* mini esquema da landing */
 .schema{background:#0e121b;border:1px solid var(--line);border-radius:18px;padding:16px;display:grid;gap:8px;width:min(260px,80vw);margin:0 auto}
 .schema div{border-radius:10px;padding:10px 12px;font-size:13px;font-weight:600;border:1px dashed var(--line);color:var(--mut)}
@@ -82,6 +85,7 @@ h2.sec{font-size:clamp(24px,4vw,34px);line-height:1.15;margin:0 0 8px}
 /* form */
 .form{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;margin:36px auto;display:grid;gap:14px;max-width:560px}
 .form h2{font-size:26px}
+.chip[hidden]{display:none}
 .chip{display:inline-block;background:#22d3a01f;color:var(--ac);border:1px solid #22d3a055;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700;justify-self:start}
 label{display:grid;gap:6px;font-size:14px;color:var(--mut)}
 input,select{background:#0e121b;color:var(--tx);border:1px solid var(--line);border-radius:12px;padding:14px;font-size:16px;width:100%}
@@ -156,12 +160,9 @@ fbq('init','2018578222100683');fbq('track','PageView');
         <a class="btn" href="#contato" data-service="landing-page">Quero uma landing page</a>
       </div>
     </div>
-    <div class="schema" aria-label="Estrutura de uma landing page">
-      <div class="b1">Sua oferta, em destaque</div>
-      <div>Como funciona</div>
-      <div>Dúvidas frequentes</div>
-      <div class="b4">Falar no WhatsApp</div>
-      <small>Estrutura de uma landing page</small>
+    <div class="prevwrap">
+      <img class="art" src="assets/criativo-landing.webp" alt="Ilustração de uma landing page no celular com botão de WhatsApp" width="1122" height="1402" loading="lazy">
+      <span class="fyi">Ilustração</span>
     </div>
   </section>
 
@@ -172,7 +173,7 @@ fbq('init','2018578222100683');fbq('track','PageView');
   </div>
 
   <!-- C. Setup -->
-  <section class="offer" id="setup-trafego" aria-labelledby="t-st" style="grid-template-columns:1fr">
+  <section class="offer" id="setup-trafego" aria-labelledby="t-st">
     <div>
       <span class="n">3</span>
       <h3 id="t-st">Sua conta de anúncios organizada e com conversões rastreadas.</h3>
@@ -183,8 +184,12 @@ fbq('init','2018578222100683');fbq('track','PageView');
         <li>Teste de conversão</li>
       </ul>
       <div class="acts">
-        <a class="btn" href="#contato" data-service="setup-trafego" style="max-width:380px">Quero configurar meu tráfego</a>
+        <a class="btn" href="#contato" data-service="setup-trafego">Quero configurar meu tráfego</a>
       </div>
+    </div>
+    <div class="prevwrap">
+      <img class="art" src="assets/criativo-setup.webp" alt="Ilustração: campanha configurada e rastreamento testado" width="1122" height="1402" loading="lazy">
+      <span class="fyi">Ilustração</span>
     </div>
   </section>
 
@@ -193,7 +198,7 @@ fbq('init','2018578222100683');fbq('track','PageView');
     <h2 class="sec">Também fazemos</h2>
     <p class="sub">Serviços para completar o seu projeto.</p>
     <div class="grid">
-      <div class="card"><div class="ico">🎨</div><h3>Criativos para tráfego</h3><p>Imagens e vídeos de anúncio.</p><a class="btn ghost sm" href="#contato" data-service="criativos">Pedir orçamento</a></div>
+      <div class="card"><img class="art" src="assets/criativo-criativos.webp" alt="Ilustração de arte e vídeo de anúncio para um produto" width="1122" height="1402" loading="lazy"><h3>Criativos para tráfego</h3><p>Imagens e vídeos de anúncio.</p><a class="btn ghost sm" href="#contato" data-service="criativos">Pedir orçamento</a></div>
       <div class="card"><div class="ico">📸</div><h3>Fotos com IA</h3><p>Fotos profissionais geradas com inteligência artificial.</p><a class="btn ghost sm" href="#contato" data-service="fotos-ia">Pedir orçamento</a></div>
       <div class="card"><div class="ico">🎬</div><h3>Vídeos com IA</h3><p>Vídeos para anúncios e redes sociais.</p><a class="btn ghost sm" href="#contato" data-service="videos-ia">Pedir orçamento</a></div>
     </div>
