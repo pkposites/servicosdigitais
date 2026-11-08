@@ -7,85 +7,94 @@
 <meta name="description" content="Página para a bio do Instagram, landing page, configuração de anúncios e artes e vídeos para divulgar sua oferta. Peça seu orçamento pelo WhatsApp.">
 <script src="https://cadeolead.com.br/tracker.js" data-key="pk_7b4c16f0e1bc4df58dd2acc474d9ac15" data-consent="banner" async></script>
 <style>
-:root{--bg:#0a0c10;--s1:#11151c;--s2:#171c26;--line:#262d3b;--tx:#f4f6fa;--tx2:#b7c0d1;--ac:#22d3a0;--hdr:60px}
+:root{--bg:#0a0c10;--s1:#10141b;--s2:#161b25;--line:#222937;--tx:#f4f6fa;--tx2:#b9c2d3;--ac:#22d3a0;--hdr:60px}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{background:var(--bg);color:var(--tx);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
-.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+body{background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
 a{color:inherit}
 img,video{max-width:100%}
 /* cabeçalho */
 .top{position:sticky;top:0;z-index:20;height:var(--hdr);background:#0a0c10ee;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .top .wrap{height:100%;display:flex;justify-content:space-between;align-items:center}
 .logo{font-weight:800}.logo b{color:var(--ac)}
-.btn{display:inline-block;background:var(--ac);color:#04130d;font-weight:700;border:0;border-radius:12px;padding:14px 22px;font-size:16px;cursor:pointer;text-decoration:none;text-align:center;transition:filter .15s}
+.btn{display:inline-block;background:var(--ac);color:#04130d;font-weight:700;border:0;border-radius:12px;padding:15px 24px;font-size:16px;cursor:pointer;text-decoration:none;text-align:center;transition:filter .15s}
 .btn:hover{filter:brightness(1.08)}
-.btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .btn.sm{padding:9px 14px;font-size:14px}
-.btn.ghost{background:transparent;color:var(--tx);border:1px solid #3a4357}
+.btn.ghost{background:transparent;color:var(--tx);border:1px solid #38425a}
 .btn.ghost:hover{border-color:var(--ac);filter:none}
-/* primeira dobra */
-.hero{position:relative;overflow:hidden;border-radius:18px;margin-top:12px;padding:26px 20px 24px;background:var(--s1);border:1px solid var(--line)}
-.hero::before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:#22d3a0;opacity:.10;filter:blur(80px);right:-140px;top:-170px}
-.hero>*{position:relative}
-.hero h1{font-size:clamp(28px,7.4vw,48px);line-height:1.1;font-weight:800;letter-spacing:-.4px;max-width:20ch}
-.hero p.lead{color:var(--tx2);margin:12px 0 20px;max-width:54ch;font-size:clamp(15px,2.2vw,18px)}
+/* primeira dobra: título direto sobre o fundo, com brilho verde discreto */
+.hero{position:relative;padding:30px 0 6px}
+body{position:relative}
+body::before{content:"";position:absolute;top:0;left:0;right:0;height:460px;background:radial-gradient(640px 300px at 82% 40px,#22d3a024,transparent 72%);pointer-events:none;z-index:0}
+main,footer{position:relative;z-index:1}
+.hero h1{font-size:clamp(30px,8vw,52px);line-height:1.08;font-weight:800;letter-spacing:-.5px;max-width:18ch}
+.hero p.lead{color:var(--tx2);margin:14px 0 22px;max-width:52ch;font-size:clamp(16px,2.3vw,19px)}
 .hero .btn{width:100%;max-width:320px}
-@media(min-width:640px){.hero{padding:48px 36px 40px;margin-top:16px}.hero .btn{width:auto}}
+@media(min-width:640px){.hero{padding:64px 0 16px}.hero .btn{width:auto}}
 /* seções */
-section[id],.alias{scroll-margin-top:calc(var(--hdr) + 14px)}
+section[id],.alias{scroll-margin-top:calc(var(--hdr) + 12px)}
 .alias{display:block;height:0}
-.head{margin:28px 0 14px}
+.head{padding:30px 0 4px}
 .head h2,h2.sec{font-size:clamp(22px,4vw,30px);line-height:1.15;font-weight:800}
 .head p,.sub{color:var(--tx2);margin-top:6px}
-/* oferta */
-.offer{background:var(--s1);border:1px solid var(--line);border-radius:18px;padding:22px 18px;margin-bottom:14px;display:grid;gap:22px}
-.svc{display:inline-block;color:var(--ac);font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px}
-.badge{display:inline-block;margin-left:8px;background:var(--s2);border:1px solid var(--line);color:var(--tx2);border-radius:999px;padding:1px 10px;font-size:12px;text-transform:none;letter-spacing:0;font-weight:600;vertical-align:1px}
-.offer h3{font-size:clamp(22px,4.4vw,30px);line-height:1.15;font-weight:800;margin-bottom:10px}
-.offer p{color:var(--tx2)}
-.offer ul{margin:14px 0 18px;padding:0;list-style:none;display:grid;gap:7px}
-.offer li{padding-left:24px;position:relative;color:#e2e7f1}
+/* oferta: sem card, separada por divisória; destaque só no exemplo */
+.offer{padding:38px 0 40px;border-top:1px solid var(--line);display:grid;gap:22px;grid-template-areas:"txt" "prev" "cta"}
+.txt{grid-area:txt}.prev{grid-area:prev}.cta{grid-area:cta}
+.svc{display:inline-block;color:var(--ac);font-weight:800;font-size:12.5px;text-transform:uppercase;letter-spacing:1.4px;margin-bottom:10px}
+.badge{display:inline-block;margin-left:8px;border:1px solid #38425a;color:var(--tx2);border-radius:999px;padding:1px 10px;font-size:12px;text-transform:none;letter-spacing:0;font-weight:600;vertical-align:1px}
+.offer h3{font-size:clamp(25px,5.6vw,34px);line-height:1.12;font-weight:800;letter-spacing:-.3px;margin-bottom:12px}
+.offer p{color:var(--tx2);max-width:56ch}
+.offer ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.offer li{padding-left:26px;position:relative;color:#e4e9f2}
 .offer li::before{content:"✓";position:absolute;left:0;color:var(--ac);font-weight:800}
-.offer .btn{width:100%}
-@media(min-width:640px){.offer .btn{width:auto}}
-@media(min-width:800px){.offer{grid-template-columns:1.1fr .9fr;padding:30px;align-items:center}}
-/* prévias */
-.prev{display:grid;gap:10px;justify-items:center;align-content:center}
-.cap{font-size:13px;color:var(--tx2)}
-.phone{width:min(300px,78vw);border:7px solid #2b3345;border-radius:32px;background:#000;overflow:hidden;aspect-ratio:390/780;position:relative}
-.phone img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
-.real{color:var(--ac);font-weight:700;text-decoration:none;padding:6px 2px}
+.cta .btn{width:100%}
+@media(min-width:640px){.cta .btn{width:auto}}
+@media(min-width:820px){
+  .offer{grid-template-columns:1.05fr .95fr;grid-template-areas:"txt prev" "cta prev";grid-template-rows:auto 1fr;column-gap:56px;row-gap:24px;padding:56px 0}
+  .prev{grid-row:1/3;align-self:center}
+  .cta{align-self:start}
+}
+/* exemplos: único lugar com superfície e moldura */
+.prev{display:grid;gap:12px;justify-items:center;align-content:center;background:var(--s1);border:1px solid var(--line);border-radius:22px;padding:22px 16px 18px}
+.cap{font-size:13.5px;color:var(--tx2);text-align:center}
+.real{color:var(--ac);font-weight:700;text-decoration:none;font-size:15px}
 .real:hover{text-decoration:underline}
-.art{width:min(300px,78vw);height:auto;border-radius:16px;border:1px solid var(--line);display:block}
-.pair{display:grid;gap:18px;justify-items:center}
-.pair figure{display:grid;gap:8px;justify-items:center;margin:0}
-.pair .lab{font-weight:700;font-size:13px;color:var(--ac);text-transform:uppercase;letter-spacing:1px}
-.vid{width:min(220px,60vw);aspect-ratio:9/16;border-radius:16px;border:1px solid var(--line);background:#000;display:block}
-@media(min-width:800px){.pair{grid-template-columns:1fr 1fr;align-items:start;gap:14px}.art{width:100%}.vid{width:100%}}
+.phone{width:min(330px,86%);border:7px solid #2b3345;border-radius:34px;background:#000;overflow:hidden;aspect-ratio:390/780}
+.phone img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.case{display:grid;gap:2px;justify-items:center;text-align:center}
+.art{width:min(340px,100%);height:auto;border-radius:14px;display:block;border:1px solid var(--line)}
+.pair{display:grid;gap:26px;justify-items:center;width:100%}
+.pair figure{display:grid;gap:10px;justify-items:center;margin:0;width:100%}
+.lab{display:inline-block;font-weight:800;font-size:12px;color:#04130d;background:var(--ac);border-radius:999px;padding:3px 12px;text-transform:uppercase;letter-spacing:1px}
+.vid{width:min(240px,66%);aspect-ratio:9/16;border-radius:14px;border:1px solid var(--line);background:#000;display:block}
+@media(min-width:820px){.pair{grid-template-columns:1fr 1fr;align-items:start;gap:14px}.art{width:100%}.vid{width:78%}}
 /* comparação compacta */
-.diff{display:grid;gap:8px;margin:2px 0 14px;font-size:14px;color:var(--tx2)}
+.diff{display:grid;gap:8px;padding:6px 0 26px;font-size:14.5px;color:var(--tx2);border-top:1px solid var(--line);padding-top:22px}
 .diff div{border-left:3px solid var(--ac);padding:2px 0 2px 12px}
 .diff b{color:var(--tx)}
-@media(min-width:700px){.diff{grid-template-columns:1fr 1fr;gap:20px}}
+@media(min-width:700px){.diff{grid-template-columns:1fr 1fr;gap:24px}}
 /* outros serviços */
-.grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
-.card{background:var(--s1);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:6px;align-content:start}
-.card h3{font-size:17px}.card p{color:var(--tx2);font-size:14px}
-.card .btn{margin-top:8px}
-.more{text-align:center;margin:22px 0 4px}
-.more b{display:block;font-size:19px;margin-bottom:12px}
-/* formulário */
-.form{background:var(--s1);border:1px solid var(--line);border-radius:18px;padding:22px 18px;margin:30px auto 14px;display:grid;gap:14px;max-width:540px}
+.more-sec{border-top:1px solid var(--line);padding:38px 0 8px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.row h3{font-size:17px}.row p{color:var(--tx2);font-size:14.5px}
+.row .btn{flex:none}
+.more{text-align:center;padding:26px 0 6px}
+.more b{display:block;font-size:19px;margin-bottom:14px}
+/* formulário: superfície própria */
+.form{background:var(--s2);border:1px solid #2c3446;border-radius:20px;padding:26px 20px;margin:34px auto 14px;display:grid;gap:16px;max-width:540px;box-shadow:0 12px 40px #0006}
 .form h2{font-size:26px;font-weight:800}
-label{display:grid;gap:6px;font-size:15px;color:var(--tx);font-weight:600}
+label{display:grid;gap:7px;font-size:15px;color:var(--tx);font-weight:600}
 input,select{background:#0b0e14;color:var(--tx);border:1px solid #3a4357;border-radius:12px;padding:14px;font-size:16px;width:100%;font-weight:400}
-input::placeholder{color:#8591a6}
+input::placeholder{color:#8792a7}
 input:focus,select:focus{border-color:var(--ac);outline:3px solid #22d3a066;outline-offset:0}
+.form .btn{padding:17px 24px;font-size:17px;width:100%}
 .note{font-size:13px;color:var(--tx2);text-align:center}
 .hp{position:absolute;left:-9999px}
-.alt{text-align:center;color:var(--tx2);margin-bottom:6px}
+.alt{text-align:center;color:var(--tx2);font-size:14.5px;margin-bottom:6px}
+.alt a{color:var(--ac);font-weight:700}
 footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
 </style>
 
@@ -116,7 +125,7 @@ fbq('init','2018578222100683');fbq('track','PageView');
 
   <!-- 1. Página para bio -->
   <section class="offer" id="pagina-bio" aria-labelledby="t-bio">
-    <div>
+    <div class="txt">
       <span class="svc">Página para bio</span>
       <h3 id="t-bio">Seu negócio inteiro na bio.</h3>
       <p>Uma página que apresenta quem você é, o que faz e como falar com você, com visual personalizado para o celular e acesso ao WhatsApp.</p>
@@ -125,18 +134,20 @@ fbq('init','2018578222100683');fbq('track','PageView');
         <li>Apresentação completa do negócio</li>
         <li>Acesso ao WhatsApp</li>
       </ul>
-      <a class="btn" href="#contato" data-service="pagina-bio">Quero minha página para a bio</a>
     </div>
     <div class="prev">
       <div class="phone"><img src="assets/case-ludmilla.jpg" alt="Página da corretora Ludmilla vista no celular" width="390" height="780" loading="lazy"></div>
-      <a class="real" href="https://ludmillaimoveis.netlify.app/" target="_blank" rel="noopener" data-track="ver-pagina-real">Ver página real ↗</a>
-      <span class="cap">Exemplo real: página da corretora Ludmilla</span>
+      <div class="case">
+        <span class="cap">Exemplo real: página da corretora Ludmilla</span>
+        <a class="real" href="https://ludmillaimoveis.netlify.app/" target="_blank" rel="noopener" data-track="ver-pagina-real">Ver página real ↗</a>
+      </div>
     </div>
+    <div class="cta"><a class="btn" href="#contato" data-service="pagina-bio">Quero minha página para a bio</a></div>
   </section>
 
   <!-- 2. Landing page -->
   <section class="offer" id="landing-page" aria-labelledby="t-lp">
-    <div>
+    <div class="txt">
       <span class="svc">Landing page</span>
       <h3 id="t-lp">Uma página para a sua oferta.</h3>
       <p>Uma página dedicada a <b>uma oferta específica</b>: apresenta o serviço, responde as dúvidas e leva ao WhatsApp ou a um formulário, conforme o projeto.</p>
@@ -145,12 +156,12 @@ fbq('init','2018578222100683');fbq('track','PageView');
         <li>Seções para apresentar e tirar dúvidas</li>
         <li>Direcionamento ao WhatsApp ou formulário</li>
       </ul>
-      <a class="btn" href="#contato" data-service="landing-page">Quero uma landing page</a>
     </div>
     <div class="prev">
       <img class="art" src="assets/criativo-landing.webp" alt="Exemplo ilustrativo de landing page no celular com botão de WhatsApp" width="1122" height="1402" loading="lazy">
       <span class="cap">Exemplo ilustrativo</span>
     </div>
+    <div class="cta"><a class="btn" href="#contato" data-service="landing-page">Quero uma landing page</a></div>
   </section>
 
   <div class="diff" aria-label="Diferença entre página para bio e landing page">
@@ -161,7 +172,7 @@ fbq('init','2018578222100683');fbq('track','PageView');
   <!-- 3. Configuração de anúncios -->
   <span class="alias" id="setup-trafego"></span>
   <section class="offer" id="configuracao-anuncios" aria-labelledby="t-ca">
-    <div>
+    <div class="txt">
       <span class="svc">Configuração de anúncios <span class="badge">Serviço pontual</span></span>
       <h3 id="t-ca">Quer anunciar e não sabe por onde começar?</h3>
       <p>A gente configura sua conta e suas campanhas, para você anunciar sabendo de onde vêm os contatos.</p>
@@ -170,17 +181,17 @@ fbq('init','2018578222100683');fbq('track','PageView');
         <li>Configuração dos eventos</li>
         <li>Teste de conversão</li>
       </ul>
-      <a class="btn" href="#contato" data-service="configuracao-anuncios">Quero configurar meus anúncios</a>
     </div>
     <div class="prev">
       <img class="art" src="assets/criativo-setup.webp" alt="Exemplo ilustrativo: campanha configurada e rastreamento testado" width="1122" height="1402" loading="lazy">
       <span class="cap">Exemplo ilustrativo</span>
     </div>
+    <div class="cta"><a class="btn" href="#contato" data-service="configuracao-anuncios">Quero configurar meus anúncios</a></div>
   </section>
 
   <!-- 4. Artes e vídeos -->
   <section class="offer" id="artes-e-videos" aria-labelledby="t-av">
-    <div>
+    <div class="txt">
       <span class="svc">Artes e vídeos para anúncios</span>
       <h3 id="t-av">Precisa de criativos para anunciar?</h3>
       <p>A gente cria suas artes e vídeos para divulgar sua oferta.</p>
@@ -188,7 +199,6 @@ fbq('init','2018578222100683');fbq('track','PageView');
         <li>Artes estáticas para anúncio</li>
         <li>Vídeos para anúncio</li>
       </ul>
-      <a class="btn" href="#contato" data-service="artes-e-videos">Quero artes e vídeos</a>
     </div>
     <div class="prev">
       <div class="pair">
@@ -198,23 +208,22 @@ fbq('init','2018578222100683');fbq('track','PageView');
           <span class="cap">Exemplo ilustrativo</span>
         </figure>
         <figure>
-          <span class="lab">Vídeo para anúncio</span>
+          <span class="lab">Vídeo de apresentação</span>
           <video class="vid" controls preload="none" playsinline poster="assets/vsl-poster.jpg" aria-label="Vídeo de apresentação da RDA Serviços Digitais"><source src="assets/vsl-rda-web.mp4" type="video/mp4"></video>
-          <span class="cap">Toque para assistir</span>
+          <span class="cap">Apresenta a RDA. Toque para assistir.</span>
         </figure>
       </div>
     </div>
+    <div class="cta"><a class="btn" href="#contato" data-service="artes-e-videos">Quero artes e vídeos</a></div>
   </section>
 
   <!-- outros serviços -->
-  <section id="outros" style="margin-top:30px">
+  <section class="more-sec" id="outros">
     <h2 class="sec">Outros serviços</h2>
-    <p class="sub" style="margin-bottom:12px">Para completar o seu projeto.</p>
-    <div class="grid">
-      <div class="card"><h3>Fotos com IA</h3><p>Fotos profissionais geradas com inteligência artificial.</p><a class="btn ghost sm" href="#contato" data-service="fotos-ia">Pedir orçamento</a></div>
-      <div class="card"><h3>Vídeos com IA</h3><p>Vídeos para redes sociais e apresentações.</p><a class="btn ghost sm" href="#contato" data-service="videos-ia">Pedir orçamento</a></div>
-    </div>
-    <div class="more"><b>Tem outro projeto em mente? Conta pra gente</b><a class="btn" href="#contato" data-service="outro">Contar meu projeto</a></div>
+    <p class="sub" style="margin-bottom:10px">Para completar o seu projeto.</p>
+    <div class="row"><div><h3>Fotos com IA</h3><p>Fotos profissionais geradas com inteligência artificial.</p></div><a class="btn ghost sm" href="#contato" data-service="fotos-ia">Pedir orçamento</a></div>
+    <div class="row"><div><h3>Vídeos com IA</h3><p>Vídeos para redes sociais e apresentações.</p></div><a class="btn ghost sm" href="#contato" data-service="videos-ia">Pedir orçamento</a></div>
+    <div class="more"><b>Tem outro projeto em mente? Conta pra gente</b><a class="btn ghost" href="#contato" data-service="outro">Contar meu projeto</a></div>
   </section>
 
   <!-- contato -->
@@ -248,7 +257,7 @@ fbq('init','2018578222100683');fbq('track','PageView');
     <button class="btn" type="submit" id="send">Continuar no WhatsApp</button>
     <p class="note" id="msg" role="status">Sem compromisso. Seus dados são usados só para este contato.</p>
   </form>
-  <p class="alt">Prefere falar direto? <a href="https://wa.me/5511991912707?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20RDA%20Servi%C3%A7os%20Digitais." target="_blank" rel="noopener" id="wa-geral" style="color:var(--ac);font-weight:700">Chamar no WhatsApp</a></p>
+  <p class="alt">Prefere falar direto? <a href="https://wa.me/5511991912707?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20RDA%20Servi%C3%A7os%20Digitais." target="_blank" rel="noopener" id="wa-geral">Chamar no WhatsApp</a></p>
 
   <footer>© RDA Serviços Digitais</footer>
 </main>
