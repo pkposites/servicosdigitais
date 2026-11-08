@@ -111,7 +111,15 @@ section[id],.alias{scroll-margin-top:calc(var(--hdr) + 12px)}
 .track::-webkit-scrollbar{display:none}
 .slide{flex:0 0 min(300px,80%);scroll-snap-align:start;display:grid;gap:8px;justify-items:start;align-content:start}
 .frame{width:100%;border:7px solid #2b3345;border-radius:30px;background:#000;overflow:hidden;height:min(540px,72vh)}
-.scr{height:100%;overflow-y:auto;background:#fff;scrollbar-width:none}
+.scr{height:100%;overflow-y:hidden;background:#fff;scrollbar-width:none}
+.frame{position:relative}
+.frame.on .scr{overflow-y:auto;-webkit-overflow-scrolling:touch}
+.lock{position:absolute;inset:0;z-index:2;border:0;padding:0 0 18px;cursor:pointer;display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(to top,#0a0c10b3 0%,#0a0c1000 42%);color:#0a0c10;font:inherit}
+.lock span{background:#fffffff2;color:#0a0c10;font-weight:700;font-size:14.5px;border-radius:999px;padding:11px 20px;box-shadow:0 6px 18px #0006}
+.lock:hover span{background:#fff}
+.frame.on .lock{display:none}
+.shut{display:none;position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:3;box-shadow:0 6px 18px #0006;border:0;cursor:pointer;background:#0a0c10d9;color:#fff;font:600 13px system-ui,sans-serif;border-radius:999px;padding:8px 14px;backdrop-filter:blur(6px)}
+.frame.on .shut{display:block}
 .scr::-webkit-scrollbar{display:none}
 .scr img{width:100%;height:auto;display:block}
 .slide .t{font-weight:700;font-size:15px;line-height:1.3}
@@ -157,7 +165,6 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
 <body>
 <header class="top"><div class="wrap">
   <div class="logo">RDA <b>Serviços Digitais</b></div>
-  <a class="btn sm" href="#contato" data-service="geral">Pedir orçamento</a>
 </div></header>
 
 <main class="wrap">
@@ -216,7 +223,7 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
         </article>
         </div>
         <div class="ctrl"><button type="button" class="cprev" aria-label="Exemplo anterior">←</button><div class="dots" aria-hidden="true"></div><button type="button" class="cnext" aria-label="Próximo exemplo">→</button></div>
-        <p class="hint">Exemplos reais. Role dentro do card para ver a página inteira e deslize para o lado para ver outros.</p>
+        <p class="hint">Exemplos reais. Toque em “Ver exemplo” para navegar pela página inteira e deslize para o lado para ver outros.</p>
       </div>
     </div>
     <div class="cta"><a class="lnk" href="#contato" data-service="pagina-bio">Pedir orçamento para página da bio →</a></div>
@@ -254,7 +261,7 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
         </article>
         </div>
         <div class="ctrl"><button type="button" class="cprev" aria-label="Exemplo anterior">←</button><div class="dots" aria-hidden="true"></div><button type="button" class="cnext" aria-label="Próximo exemplo">→</button></div>
-        <p class="hint">Exemplos reais. Role dentro do card para ver a página inteira e deslize para o lado para ver outros.</p>
+        <p class="hint">Exemplos reais. Toque em “Ver exemplo” para navegar pela página inteira e deslize para o lado para ver outros.</p>
       </div>
     </div>
     <div class="cta"><a class="lnk" href="#contato" data-service="landing-page">Pedir orçamento para landing page →</a></div>
@@ -405,6 +412,18 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
     root.querySelector(".cprev").addEventListener("click",function(){go(cur-1)});
     root.querySelector(".cnext").addEventListener("click",function(){go(cur+1)});
     paint();
+    // rolagem interna travada até a pessoa tocar em "Ver exemplo"
+    var frames=[].slice.call(root.querySelectorAll(".frame"));
+    function lockAll(except){frames.forEach(function(f){if(f!==except)f.classList.remove("on")})}
+    frames.forEach(function(fr){
+      var nome=(fr.parentNode.querySelector(".t")||{}).firstChild;nome=nome?nome.textContent.trim():"exemplo";
+      var open=document.createElement("button");open.type="button";open.className="lock";open.setAttribute("aria-label","Ver exemplo: navegar pela página de "+nome);open.innerHTML="<span>Ver exemplo ↕</span>";
+      var shut=document.createElement("button");shut.type="button";shut.className="shut";shut.textContent="Fechar ✕";shut.setAttribute("aria-label","Voltar a rolar o site");
+      fr.appendChild(open);fr.appendChild(shut);
+      open.addEventListener("click",function(){lockAll(fr);fr.classList.add("on");track("ExampleOpen",{example:nome},true)});
+      shut.addEventListener("click",function(){fr.classList.remove("on");var sc=fr.querySelector(".scr");if(sc)sc.scrollTop=0});
+      if("IntersectionObserver" in window)new IntersectionObserver(function(en){en.forEach(function(x){if(x.intersectionRatio<.45)fr.classList.remove("on")})},{threshold:[0,.45,1]}).observe(fr);
+    });
   });
   window.addEventListener("hashchange",function(){var k=fromHash();if(k)setService(k)});
 
