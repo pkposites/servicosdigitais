@@ -69,9 +69,6 @@ section[id],.alias{scroll-margin-top:calc(var(--hdr) + 12px)}
 .cap{font-size:13.5px;color:var(--tx2)}
 .real{color:var(--ac);font-weight:700;text-decoration:none;font-size:15px}
 .real:hover{text-decoration:underline}
-.phone{width:min(340px,100%);border:7px solid #2b3345;border-radius:34px;background:#000;overflow:hidden;aspect-ratio:390/780}
-.phone img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
-.case{display:grid;gap:2px;justify-items:start}
 .art{width:min(340px,100%);height:auto;border-radius:14px;display:block;border:1px solid var(--line)}
 .pair{display:grid;gap:30px;justify-items:start;width:100%}
 .pair figure{display:grid;gap:10px;justify-items:start;margin:0;width:100%}
@@ -154,10 +151,21 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
       </ul>
     </div>
     <div class="prev">
-      <div class="phone"><img src="assets/case-ludmilla.jpg" alt="Página da corretora Ludmilla vista no celular" width="390" height="780" loading="lazy"></div>
-      <div class="case">
-        <span class="cap">Exemplo real: página da corretora Ludmilla</span>
-        <a class="real" href="https://ludmillaimoveis.netlify.app/" target="_blank" rel="noopener" data-track="ver-pagina-real">Ver página real ↗</a>
+      <div class="cases" data-carousel>
+        <div class="track" aria-label="Exemplos de páginas para bio que criamos">
+        <article class="slide">
+          <div class="frame"><div class="scr" tabindex="0" role="region" aria-label="Ludmilla: role para ver a página inteira"><img src="assets/cases/ludmilla.webp" alt="Página da corretora Ludmilla vista no celular" width="500" height="15401" loading="lazy"></div></div>
+          <div class="t">Ludmilla<span>Corretora de imóveis</span></div>
+          <a class="real" href="https://ludmillaimoveis.netlify.app/" target="_blank" rel="noopener" data-track="ver-pagina-real">Ver página real ↗</a>
+        </article>
+        <article class="slide">
+          <div class="frame"><div class="scr" tabindex="0" role="region" aria-label="Dr. João Paulo Brizante: role para ver a página inteira"><img src="assets/cases/brizante.webp" alt="Página do Dr. João Paulo Brizante, saúde e performance" width="576" height="6587" loading="lazy"></div></div>
+          <div class="t">Dr. João Paulo Brizante<span>Saúde e performance</span></div>
+          <a class="real" href="https://lp-drjoaopaulobrizante.netlify.app/" target="_blank" rel="noopener" data-track="ver-case-brizante">Ver página real ↗</a>
+        </article>
+        </div>
+        <div class="ctrl"><button type="button" class="cprev" aria-label="Exemplo anterior">←</button><div class="dots" aria-hidden="true"></div><button type="button" class="cnext" aria-label="Próximo exemplo">→</button></div>
+        <p class="hint">Exemplos reais. Role dentro do card para ver a página inteira e deslize para o lado para ver outros.</p>
       </div>
     </div>
     <div class="cta"><a class="lnk" href="#contato" data-service="pagina-bio">Pedir orçamento para página da bio →</a></div>
@@ -176,8 +184,8 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
       </ul>
     </div>
     <div class="prev">
-      <div class="cases" id="cases">
-        <div class="track" id="track" aria-label="Exemplos de landing pages que criamos">
+      <div class="cases" data-carousel>
+        <div class="track" aria-label="Exemplos de landing pages que criamos">
         <article class="slide">
           <div class="frame"><div class="scr" tabindex="0" role="region" aria-label="Dra. Leila Freire: role para ver a página inteira"><img src="assets/cases/leila.webp" alt="Landing page de Dra. Leila Freire, cirurgia plástica da face" width="576" height="13920" loading="lazy"></div></div>
           <div class="t">Dra. Leila Freire<span>Cirurgia plástica da face</span></div>
@@ -193,13 +201,8 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
           <div class="t">J.A Instalações<span>Manutenção hidráulica</span></div>
           <a class="real" href="https://hidraulica.jainstalacoes.com/" target="_blank" rel="noopener" data-track="ver-case-hidraulica">Ver página real ↗</a>
         </article>
-        <article class="slide">
-          <div class="frame"><div class="scr" tabindex="0" role="region" aria-label="Dr. João Paulo Brizante: role para ver a página inteira"><img src="assets/cases/brizante.webp" alt="Página do Dr. João Paulo Brizante, saúde e performance" width="576" height="6587" loading="lazy"></div></div>
-          <div class="t">Dr. João Paulo Brizante<span>Saúde e performance</span></div>
-          <a class="real" href="https://lp-drjoaopaulobrizante.netlify.app/" target="_blank" rel="noopener" data-track="ver-case-brizante">Ver página real ↗</a>
-        </article>
         </div>
-        <div class="ctrl"><button type="button" id="cprev" aria-label="Exemplo anterior">←</button><div class="dots" id="cdots" aria-hidden="true"></div><button type="button" id="cnext" aria-label="Próximo exemplo">→</button></div>
+        <div class="ctrl"><button type="button" class="cprev" aria-label="Exemplo anterior">←</button><div class="dots" aria-hidden="true"></div><button type="button" class="cnext" aria-label="Próximo exemplo">→</button></div>
         <p class="hint">Exemplos reais. Role dentro do card para ver a página inteira e deslize para o lado para ver outros.</p>
       </div>
     </div>
@@ -339,18 +342,17 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
   });
 
 
-  // carrossel de cases
-  (function(){
-    var tr=document.getElementById("track");if(!tr)return;
-    var slides=[].slice.call(tr.children),dots=document.getElementById("cdots"),cur=0;
+  // carrosséis de cases (um por oferta)
+  document.querySelectorAll("[data-carousel]").forEach(function(root){
+    var tr=root.querySelector(".track"),slides=[].slice.call(tr.children),dots=root.querySelector(".dots"),cur=0;
     slides.forEach(function(){dots.appendChild(document.createElement("i"))});
     function paint(){var x=tr.scrollLeft,best=0,d=1e9;slides.forEach(function(sl,i){var k=Math.abs(sl.offsetLeft-tr.offsetLeft-x);if(k<d){d=k;best=i}});cur=best;[].forEach.call(dots.children,function(el,i){el.classList.toggle("on",i===best)})}
     function go(i){i=Math.max(0,Math.min(slides.length-1,i));tr.scrollTo({left:slides[i].offsetLeft-tr.offsetLeft,behavior:"smooth"})}
     tr.addEventListener("scroll",function(){window.requestAnimationFrame(paint)},{passive:true});
-    document.getElementById("cprev").addEventListener("click",function(){go(cur-1)});
-    document.getElementById("cnext").addEventListener("click",function(){go(cur+1)});
+    root.querySelector(".cprev").addEventListener("click",function(){go(cur-1)});
+    root.querySelector(".cnext").addEventListener("click",function(){go(cur+1)});
     paint();
-  })();
+  });
   window.addEventListener("hashchange",function(){var k=fromHash();if(k)setService(k)});
 
   document.querySelectorAll("[data-service]").forEach(function(a){
