@@ -84,6 +84,19 @@ main,footer{position:relative;z-index:1}
 /* seções */
 section[id],.alias{scroll-margin-top:calc(var(--hdr) + 12px)}
 .alias{display:block;height:0}
+/* faixa estreita que movimenta: o que fazemos */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.svcs{border:1px solid #ffffff22;background:#ffffff0b;border-radius:16px;padding:16px 18px 14px;overflow:hidden}
+.svcs ul{list-style:none;margin:0;padding:0;display:grid}
+.svcs li{grid-area:1/1;display:grid;gap:4px;align-content:start;opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease;pointer-events:none}
+.svcs li.on{opacity:1;transform:none;pointer-events:auto}
+.svcs .k{color:var(--ac);font-weight:800;font-size:12px;letter-spacing:1.3px;text-transform:uppercase}
+.svcs .m{font-size:clamp(16px,4.2vw,19px);line-height:1.35;color:var(--tx);font-weight:600}
+.svcs .pg{display:flex;gap:6px;margin-top:12px}
+.svcs .pg i{flex:1;height:3px;border-radius:3px;background:#ffffff26;overflow:hidden;position:relative}
+.svcs .pg i.on::after{content:"";position:absolute;inset:0;background:var(--ac);transform-origin:left;animation:fillbar var(--t,4s) linear forwards}
+@keyframes fillbar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.svcs ul{display:block}.svcs li{opacity:1;transform:none;padding:6px 0;pointer-events:auto}.svcs .pg{display:none}}
 .head{padding:40px 0 30px}
 .head h2,h2.sec{font-size:clamp(22px,4vw,30px);line-height:1.15;font-weight:800}
 .head p,.sub{color:var(--tx2);margin-top:6px}
@@ -200,8 +213,18 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
   </section>
 
   <div class="head" id="ofertas">
-    <h2>Nossos serviços</h2>
-    <p>Escolha o que combina com o seu momento.</p>
+    <h2 class="sr">Nossos serviços</h2>
+    <div class="svcs" id="svcs" role="region" aria-label="O que fazemos">
+      <ul>
+        <li><span class="k">Anúncios</span><span class="m">Fazemos sua estrutura de conta de anúncios profissional</span></li>
+        <li><span class="k">Vídeo e motion</span><span class="m">Fazemos o seu criativo em vídeo/motion para divulgar o seu serviço ou produto</span></li>
+        <li><span class="k">Imagem</span><span class="m">Fazemos o seu criativo em imagem para divulgar o seu serviço ou produto</span></li>
+        <li><span class="k">Narração</span><span class="m">Fazemos a narração para o seu vídeo</span></li>
+        <li><span class="k">Página de vendas</span><span class="m">Fazemos sua página de vendas</span></li>
+        <li><span class="k">Página para bio</span><span class="m">Fazemos sua landing page para a bio do Instagram, com todas as suas informações</span></li>
+      </ul>
+      <div class="pg" aria-hidden="true"></div>
+    </div>
   </div>
 
   <!-- 1. Página para bio -->
@@ -410,6 +433,25 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
 
   // foto do expert: aparece quando assets/expert.webp existir
   (function(){var im=new Image();im.onload=function(){var el=document.getElementById("expert-img");el.src=im.src;document.getElementById("expert").hidden=false};im.src="assets/expert.webp"})();
+  // faixa "o que fazemos": troca a cada 4s, pausa ao tocar/passar o mouse
+  (function(){
+    var box=document.getElementById("svcs");if(!box)return;
+    var items=[].slice.call(box.querySelectorAll("li")),pg=box.querySelector(".pg"),cur=0,timer=null,T=4000;
+    if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+    items.forEach(function(){pg.appendChild(document.createElement("i"))});
+    var bars=[].slice.call(pg.children);box.style.setProperty("--t",(T/1000)+"s");
+    function show(i){
+      cur=(i+items.length)%items.length;
+      items.forEach(function(el,k){el.classList.toggle("on",k===cur)});
+      bars.forEach(function(el,k){el.classList.remove("on");if(k===cur){void el.offsetWidth;el.classList.add("on")}});
+    }
+    function play(){clearTimeout(timer);timer=setTimeout(function(){show(cur+1);play()},T)}
+    function pause(){clearTimeout(timer);bars.forEach(function(el){el.style.animationPlayState="paused"})}
+    function resume(){bars.forEach(function(el){el.style.animationPlayState=""});show(cur);play()}
+    box.addEventListener("pointerenter",pause);box.addEventListener("pointerleave",resume);
+    document.addEventListener("visibilitychange",function(){document.hidden?pause():resume()});
+    show(0);play();
+  })();
   // carrosséis de cases (um por oferta)
   document.querySelectorAll("[data-carousel]").forEach(function(root){
     var tr=root.querySelector(".track"),slides=[].slice.call(tr.children),dots=root.querySelector(".dots"),cur=0;
