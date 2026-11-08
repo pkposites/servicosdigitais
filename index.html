@@ -37,17 +37,20 @@ body{position:relative}
 body::before{content:"";position:absolute;top:0;left:0;right:0;height:460px;background:radial-gradient(640px 300px at 82% 40px,#22d3a024,transparent 72%);pointer-events:none;z-index:0}
 main,footer{position:relative;z-index:1}
 .hero h1{font-size:clamp(30px,8vw,52px);line-height:1.08;font-weight:800;letter-spacing:-.5px;max-width:18ch}
-.hero p.lead{color:var(--tx2);margin:14px 0 22px;max-width:52ch;font-size:clamp(16px,2.3vw,19px)}
-.hero .btn{width:100%;max-width:320px}
-@media(min-width:640px){.hero{padding:64px 0 16px}.hero .btn{width:auto}}
+.hero p.lead{color:var(--tx2);margin:14px 0 16px;max-width:52ch;font-size:clamp(16px,2.3vw,19px)}
+.lnk{display:inline-block;color:var(--ac);font-weight:700;text-decoration:none;font-size:16px;padding:6px 0;line-height:1.35}
+.lnk:hover{text-decoration:underline;text-underline-offset:4px}
+.lnk.soft{color:var(--tx2);font-weight:600}
+.lnk.soft:hover{color:var(--tx)}
+@media(min-width:640px){.hero{padding:64px 0 16px}}
 /* seções */
 section[id],.alias{scroll-margin-top:calc(var(--hdr) + 12px)}
 .alias{display:block;height:0}
-.head{padding:30px 0 4px}
+.head{padding:34px 0 4px}
 .head h2,h2.sec{font-size:clamp(22px,4vw,30px);line-height:1.15;font-weight:800}
 .head p,.sub{color:var(--tx2);margin-top:6px}
 /* oferta: sem card, separada por divisória; destaque só no exemplo */
-.offer{padding:38px 0 40px;border-top:1px solid var(--line);display:grid;gap:22px;grid-template-areas:"txt" "prev" "cta"}
+.offer{padding:44px 0 46px;border-top:1px solid var(--line);display:grid;gap:26px;grid-template-areas:"txt" "prev" "cta"}
 .txt{grid-area:txt}.prev{grid-area:prev}.cta{grid-area:cta}
 .svc{display:inline-block;color:var(--ac);font-weight:800;font-size:12.5px;text-transform:uppercase;letter-spacing:1.4px;margin-bottom:10px}
 .badge{display:inline-block;margin-left:8px;border:1px solid #38425a;color:var(--tx2);border-radius:999px;padding:1px 10px;font-size:12px;text-transform:none;letter-spacing:0;font-weight:600;vertical-align:1px}
@@ -56,39 +59,36 @@ section[id],.alias{scroll-margin-top:calc(var(--hdr) + 12px)}
 .offer ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:8px}
 .offer li{padding-left:26px;position:relative;color:#e4e9f2}
 .offer li::before{content:"✓";position:absolute;left:0;color:var(--ac);font-weight:800}
-.cta .btn{width:100%}
-@media(min-width:640px){.cta .btn{width:auto}}
 @media(min-width:820px){
-  .offer{grid-template-columns:1.05fr .95fr;grid-template-areas:"txt prev" "cta prev";grid-template-rows:auto 1fr;column-gap:56px;row-gap:24px;padding:56px 0}
+  .offer{grid-template-columns:1.05fr .95fr;grid-template-areas:"txt prev" "cta prev";grid-template-rows:auto 1fr;column-gap:64px;row-gap:22px;padding:64px 0}
   .prev{grid-row:1/3;align-self:center}
   .cta{align-self:start}
 }
 /* exemplos: único lugar com superfície e moldura */
-.prev{display:grid;gap:12px;justify-items:center;align-content:center;background:var(--s1);border:1px solid var(--line);border-radius:22px;padding:22px 16px 18px}
-.cap{font-size:13.5px;color:var(--tx2);text-align:center}
+.prev{display:grid;gap:12px;justify-items:start;align-content:center}
+.cap{font-size:13.5px;color:var(--tx2)}
 .real{color:var(--ac);font-weight:700;text-decoration:none;font-size:15px}
 .real:hover{text-decoration:underline}
-.phone{width:min(330px,86%);border:7px solid #2b3345;border-radius:34px;background:#000;overflow:hidden;aspect-ratio:390/780}
+.phone{width:min(340px,100%);border:7px solid #2b3345;border-radius:34px;background:#000;overflow:hidden;aspect-ratio:390/780}
 .phone img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
-.case{display:grid;gap:2px;justify-items:center;text-align:center}
+.case{display:grid;gap:2px;justify-items:start}
 .art{width:min(340px,100%);height:auto;border-radius:14px;display:block;border:1px solid var(--line)}
-.pair{display:grid;gap:26px;justify-items:center;width:100%}
-.pair figure{display:grid;gap:10px;justify-items:center;margin:0;width:100%}
+.pair{display:grid;gap:30px;justify-items:start;width:100%}
+.pair figure{display:grid;gap:10px;justify-items:start;margin:0;width:100%}
 .lab{display:inline-block;font-weight:800;font-size:12px;color:#04130d;background:var(--ac);border-radius:999px;padding:3px 12px;text-transform:uppercase;letter-spacing:1px}
-.vid{width:min(240px,66%);aspect-ratio:9/16;border-radius:14px;border:1px solid var(--line);background:#000;display:block}
+.vid{width:min(260px,72%);aspect-ratio:9/16;border-radius:14px;border:1px solid var(--line);background:#000;display:block}
 @media(min-width:820px){.pair{grid-template-columns:1fr 1fr;align-items:start;gap:14px}.art{width:100%}.vid{width:78%}}
-/* comparação compacta */
-.diff{display:grid;gap:8px;padding:6px 0 26px;font-size:14.5px;color:var(--tx2);border-top:1px solid var(--line);padding-top:22px}
-.diff div{border-left:3px solid var(--ac);padding:2px 0 2px 12px}
+/* comparação: nota curta dentro do fluxo */
+.diff{padding:0 0 44px;color:var(--tx2);font-size:15px;display:grid;gap:6px}
 .diff b{color:var(--tx)}
-@media(min-width:700px){.diff{grid-template-columns:1fr 1fr;gap:24px}}
-/* outros serviços */
-.more-sec{border-top:1px solid var(--line);padding:38px 0 8px}
-.row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
-.row h3{font-size:17px}.row p{color:var(--tx2);font-size:14.5px}
-.row .btn{flex:none}
-.more{text-align:center;padding:26px 0 6px}
-.more b{display:block;font-size:19px;margin-bottom:14px}
+.diff p{max-width:60ch}
+/* outros serviços: lista compacta */
+.more-sec{border-top:1px solid var(--line);padding:44px 0 10px}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
+.row h3{font-size:16.5px}.row p{color:var(--tx2);font-size:14.5px}
+.row .lnk{flex:none;font-size:15px}
+.more{padding:22px 0 6px;color:var(--tx)}
+.more b{display:block;font-size:18px;margin-bottom:4px}
 /* formulário: superfície própria */
 .form{background:var(--s2);border:1px solid #2c3446;border-radius:20px;padding:26px 20px;margin:34px auto 14px;display:grid;gap:16px;max-width:540px;box-shadow:0 12px 40px #0006}
 .form h2{font-size:26px;font-weight:800}
@@ -115,7 +115,7 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
   <section class="hero" id="topo" aria-labelledby="h1">
     <h1 id="h1">Páginas, anúncios e criativos para o seu negócio</h1>
     <p class="lead">Criamos sua página, configuramos suas campanhas e produzimos artes e vídeos para divulgar sua oferta.</p>
-    <a class="btn" href="#ofertas" data-track="ver-servicos">Ver os serviços</a>
+    <a class="lnk" href="#ofertas" data-track="ver-servicos">Ver os serviços →</a>
   </section>
 
   <div class="head" id="ofertas">
@@ -142,7 +142,7 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
         <a class="real" href="https://ludmillaimoveis.netlify.app/" target="_blank" rel="noopener" data-track="ver-pagina-real">Ver página real ↗</a>
       </div>
     </div>
-    <div class="cta"><a class="btn" href="#contato" data-service="pagina-bio">Quero minha página para a bio</a></div>
+    <div class="cta"><a class="lnk" href="#contato" data-service="pagina-bio">Pedir orçamento para página da bio →</a></div>
   </section>
 
   <!-- 2. Landing page -->
@@ -161,12 +161,11 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
       <img class="art" src="assets/criativo-landing.webp" alt="Exemplo ilustrativo de landing page no celular com botão de WhatsApp" width="1122" height="1402" loading="lazy">
       <span class="cap">Exemplo ilustrativo</span>
     </div>
-    <div class="cta"><a class="btn" href="#contato" data-service="landing-page">Quero uma landing page</a></div>
+    <div class="cta"><a class="lnk" href="#contato" data-service="landing-page">Pedir orçamento para landing page →</a></div>
   </section>
 
   <div class="diff" aria-label="Diferença entre página para bio e landing page">
-    <div><b>Página para bio:</b> apresenta o negócio inteiro.</div>
-    <div><b>Landing page:</b> apresenta uma oferta específica.</div>
+    <p><b>Qual a diferença?</b> A página para bio apresenta o negócio inteiro. A landing page apresenta uma oferta específica.</p>
   </div>
 
   <!-- 3. Configuração de anúncios -->
@@ -186,7 +185,7 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
       <img class="art" src="assets/criativo-setup.webp" alt="Exemplo ilustrativo: campanha configurada e rastreamento testado" width="1122" height="1402" loading="lazy">
       <span class="cap">Exemplo ilustrativo</span>
     </div>
-    <div class="cta"><a class="btn" href="#contato" data-service="configuracao-anuncios">Quero configurar meus anúncios</a></div>
+    <div class="cta"><a class="lnk" href="#contato" data-service="configuracao-anuncios">Pedir orçamento para configuração de anúncios →</a></div>
   </section>
 
   <!-- 4. Artes e vídeos -->
@@ -214,16 +213,16 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
         </figure>
       </div>
     </div>
-    <div class="cta"><a class="btn" href="#contato" data-service="artes-e-videos">Quero artes e vídeos</a></div>
+    <div class="cta"><a class="lnk" href="#contato" data-service="artes-e-videos">Pedir orçamento para artes e vídeos →</a></div>
   </section>
 
   <!-- outros serviços -->
   <section class="more-sec" id="outros">
     <h2 class="sec">Outros serviços</h2>
-    <p class="sub" style="margin-bottom:10px">Para completar o seu projeto.</p>
-    <div class="row"><div><h3>Fotos com IA</h3><p>Fotos profissionais geradas com inteligência artificial.</p></div><a class="btn ghost sm" href="#contato" data-service="fotos-ia">Pedir orçamento</a></div>
-    <div class="row"><div><h3>Vídeos com IA</h3><p>Vídeos para redes sociais e apresentações.</p></div><a class="btn ghost sm" href="#contato" data-service="videos-ia">Pedir orçamento</a></div>
-    <div class="more"><b>Tem outro projeto em mente? Conta pra gente</b><a class="btn ghost" href="#contato" data-service="outro">Contar meu projeto</a></div>
+    <p class="sub" style="margin-bottom:8px">Para completar o seu projeto.</p>
+    <div class="row"><div><h3>Fotos com IA</h3><p>Fotos profissionais geradas com inteligência artificial.</p></div><a class="lnk soft" href="#contato" data-service="fotos-ia">Pedir orçamento →</a></div>
+    <div class="row"><div><h3>Vídeos com IA</h3><p>Vídeos para redes sociais e apresentações.</p></div><a class="lnk soft" href="#contato" data-service="videos-ia">Pedir orçamento →</a></div>
+    <div class="more"><b>Tem outro projeto em mente? Conta pra gente</b><a class="lnk" href="#contato" data-service="outro">Contar meu projeto →</a></div>
   </section>
 
   <!-- contato -->
