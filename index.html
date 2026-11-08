@@ -63,24 +63,24 @@ main,footer{position:relative;z-index:1}
 .lnk.soft{color:var(--tx2);font-weight:600}
 .lnk.soft:hover{color:var(--tx)}
 @media(min-width:640px){.hero{padding:64px 0 16px}}
-/* virada de tema: cada seção ganha uma faixa de fundo em degradê */
+/* virada de tema: faixas em degradê que se dissolvem umas nas outras (sem corte seco) */
 .band{position:relative}
-.band::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:linear-gradient(180deg,var(--c) 0%,#0a0c10 78%)}
-.hero.band::before{background:linear-gradient(180deg,#0f5a45 0%,#0b2b27 45%,#0a0c10 100%)}
-.hero.band::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:radial-gradient(600px 260px at 78% 0%,#3df0b833,transparent 70%);pointer-events:none}
-#pagina-bio{--c:#1b1f4d}
-#landing-page{--c:#10304a}
-#configuracao-anuncios{--c:#0f3a2c}
-#artes-e-videos{--c:#34173f}
-.more-sec{--c:#1a2231}
+.band::before{content:"";position:absolute;z-index:-1;top:-90px;bottom:-90px;left:50%;width:100vw;transform:translateX(-50%);background:linear-gradient(180deg,transparent 0%,var(--c) 32%,var(--c) 68%,transparent 100%)}
+.hero.band::before{top:0;bottom:-110px;background:linear-gradient(180deg,#0f5a45 0%,#0c3a33 45%,transparent 100%)}
+.hero.band::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:radial-gradient(600px 260px at 78% 0%,#3df0b82e,transparent 70%);pointer-events:none}
+#pagina-bio{--c:#171b45}
+#landing-page{--c:#0f2f47}
+#configuracao-anuncios{--c:#0e3528}
+#artes-e-videos{--c:#301640}
+.more-sec{--c:#18202e}
 /* seções */
 section[id],.alias{scroll-margin-top:calc(var(--hdr) + 12px)}
 .alias{display:block;height:0}
-.head{padding:34px 0 4px}
+.head{padding:40px 0 30px}
 .head h2,h2.sec{font-size:clamp(22px,4vw,30px);line-height:1.15;font-weight:800}
 .head p,.sub{color:var(--tx2);margin-top:6px}
 /* oferta: sem card, separada por divisória; destaque só no exemplo */
-.offer{position:relative;padding:48px 0 52px;display:grid;gap:26px;grid-template-areas:"txt" "prev" "cta"}
+.offer{position:relative;padding:84px 0 92px;display:grid;gap:26px;grid-template-areas:"txt" "prev" "cta"}
 .txt{grid-area:txt}.prev{grid-area:prev}.cta{grid-area:cta}
 .svc{display:inline-block;color:var(--ac);font-weight:800;font-size:12.5px;text-transform:uppercase;letter-spacing:1.4px;margin-bottom:10px}
 .badge{display:inline-block;margin-left:8px;border:1px solid #38425a;color:var(--tx2);border-radius:999px;padding:1px 10px;font-size:12px;text-transform:none;letter-spacing:0;font-weight:600;vertical-align:1px}
@@ -90,7 +90,7 @@ section[id],.alias{scroll-margin-top:calc(var(--hdr) + 12px)}
 .offer li{padding-left:26px;position:relative;color:#e4e9f2}
 .offer li::before{content:"✓";position:absolute;left:0;color:var(--ac);font-weight:800}
 @media(min-width:820px){
-  .offer{grid-template-columns:1.05fr .95fr;grid-template-areas:"txt prev" "cta prev";grid-template-rows:auto 1fr;column-gap:64px;row-gap:22px;padding:72px 0}
+  .offer{grid-template-columns:1.05fr .95fr;grid-template-areas:"txt prev" "cta prev";grid-template-rows:auto 1fr;column-gap:64px;row-gap:22px;padding:120px 0}
   .prev{grid-row:1/3;align-self:center}
   .cta{align-self:start}
 }
@@ -128,7 +128,7 @@ section[id],.alias{scroll-margin-top:calc(var(--hdr) + 12px)}
 .diff b{color:var(--tx)}
 .diff p{max-width:60ch}
 /* outros serviços: lista compacta */
-.more-sec{padding:48px 0 14px}
+.more-sec{padding:80px 0 40px}
 .row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
 .row h3{font-size:16.5px}.row p{color:var(--tx2);font-size:14.5px}
 .row .lnk{flex:none;font-size:15px}
