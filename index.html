@@ -78,6 +78,24 @@ section[id],.alias{scroll-margin-top:calc(var(--hdr) + 12px)}
 .lab{display:inline-block;font-weight:800;font-size:12px;color:#04130d;background:var(--ac);border-radius:999px;padding:3px 12px;text-transform:uppercase;letter-spacing:1px}
 .vid{width:min(260px,72%);aspect-ratio:9/16;border-radius:14px;border:1px solid var(--line);background:#000;display:block}
 @media(min-width:820px){.pair{grid-template-columns:1fr 1fr;align-items:start;gap:14px}.art{width:100%}.vid{width:78%}}
+/* carrossel de cases: cada tela rola por dentro do card */
+.cases{width:100%;min-width:0}
+.track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:2px 0 6px}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 min(300px,80%);scroll-snap-align:start;display:grid;gap:8px;justify-items:start;align-content:start}
+.frame{width:100%;border:7px solid #2b3345;border-radius:30px;background:#000;overflow:hidden;height:min(540px,72vh)}
+.scr{height:100%;overflow-y:auto;background:#fff;scrollbar-width:none}
+.scr::-webkit-scrollbar{display:none}
+.scr img{width:100%;height:auto;display:block}
+.slide .t{font-weight:700;font-size:15px;line-height:1.3}
+.slide .t span{display:block;font-weight:400;color:var(--tx2);font-size:13.5px}
+.ctrl{display:flex;align-items:center;gap:12px;margin-top:10px}
+.ctrl button{background:transparent;color:var(--tx);border:1px solid #38425a;border-radius:999px;width:38px;height:38px;font-size:17px;cursor:pointer;line-height:1}
+.ctrl button:hover{border-color:var(--ac)}
+.dots{display:flex;gap:8px;flex:1}
+.dots i{width:22px;height:4px;border-radius:4px;background:#303a4f;transition:background .2s}
+.dots i.on{background:var(--ac)}
+.hint{font-size:13px;color:var(--tx2);margin-top:8px}
 /* comparação: nota curta dentro do fluxo */
 .diff{padding:0 0 44px;color:var(--tx2);font-size:15px;display:grid;gap:6px}
 .diff b{color:var(--tx)}
@@ -158,8 +176,32 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
       </ul>
     </div>
     <div class="prev">
-      <img class="art" src="assets/criativo-landing.webp" alt="Exemplo ilustrativo de landing page no celular com botão de WhatsApp" width="1122" height="1402" loading="lazy">
-      <span class="cap">Exemplo ilustrativo</span>
+      <div class="cases" id="cases">
+        <div class="track" id="track" aria-label="Exemplos de landing pages que criamos">
+        <article class="slide">
+          <div class="frame"><div class="scr" tabindex="0" role="region" aria-label="Dra. Leila Freire: role para ver a página inteira"><img src="assets/cases/leila.webp" alt="Landing page de Dra. Leila Freire, cirurgia plástica da face" width="576" height="13920" loading="lazy"></div></div>
+          <div class="t">Dra. Leila Freire<span>Cirurgia plástica da face</span></div>
+          <a class="real" href="https://draleilalp.netlify.app/" target="_blank" rel="noopener" data-track="ver-case-leila">Ver página real ↗</a>
+        </article>
+        <article class="slide">
+          <div class="frame"><div class="scr" tabindex="0" role="region" aria-label="Letícia Caproni: role para ver a página inteira"><img src="assets/cases/leticia.webp" alt="Landing page de Letícia Caproni, reconstrução capilar" width="576" height="8644" loading="lazy"></div></div>
+          <div class="t">Letícia Caproni<span>Reconstrução capilar</span></div>
+          <a class="real" href="https://draleticiacapronilp.netlify.app/" target="_blank" rel="noopener" data-track="ver-case-leticia">Ver página real ↗</a>
+        </article>
+        <article class="slide">
+          <div class="frame"><div class="scr" tabindex="0" role="region" aria-label="J.A Instalações: role para ver a página inteira"><img src="assets/cases/hidraulica.webp" alt="Landing page da J.A Instalações, manutenção hidráulica" width="576" height="4323" loading="lazy"></div></div>
+          <div class="t">J.A Instalações<span>Manutenção hidráulica</span></div>
+          <a class="real" href="https://hidraulica.jainstalacoes.com/" target="_blank" rel="noopener" data-track="ver-case-hidraulica">Ver página real ↗</a>
+        </article>
+        <article class="slide">
+          <div class="frame"><div class="scr" tabindex="0" role="region" aria-label="Dr. João Paulo Brizante: role para ver a página inteira"><img src="assets/cases/brizante.webp" alt="Página do Dr. João Paulo Brizante, saúde e performance" width="576" height="6587" loading="lazy"></div></div>
+          <div class="t">Dr. João Paulo Brizante<span>Saúde e performance</span></div>
+          <a class="real" href="https://lp-drjoaopaulobrizante.netlify.app/" target="_blank" rel="noopener" data-track="ver-case-brizante">Ver página real ↗</a>
+        </article>
+        </div>
+        <div class="ctrl"><button type="button" id="cprev" aria-label="Exemplo anterior">←</button><div class="dots" id="cdots" aria-hidden="true"></div><button type="button" id="cnext" aria-label="Próximo exemplo">→</button></div>
+        <p class="hint">Exemplos reais. Role dentro do card para ver a página inteira e deslize para o lado para ver outros.</p>
+      </div>
     </div>
     <div class="cta"><a class="lnk" href="#contato" data-service="landing-page">Pedir orçamento para landing page →</a></div>
   </section>
@@ -296,6 +338,19 @@ footer{color:var(--tx2);font-size:13px;text-align:center;padding:24px 0 44px}
     if(el&&h!=="contato")setTimeout(function(){el.scrollIntoView()},150);
   });
 
+
+  // carrossel de cases
+  (function(){
+    var tr=document.getElementById("track");if(!tr)return;
+    var slides=[].slice.call(tr.children),dots=document.getElementById("cdots"),cur=0;
+    slides.forEach(function(){dots.appendChild(document.createElement("i"))});
+    function paint(){var x=tr.scrollLeft,best=0,d=1e9;slides.forEach(function(sl,i){var k=Math.abs(sl.offsetLeft-tr.offsetLeft-x);if(k<d){d=k;best=i}});cur=best;[].forEach.call(dots.children,function(el,i){el.classList.toggle("on",i===best)})}
+    function go(i){i=Math.max(0,Math.min(slides.length-1,i));tr.scrollTo({left:slides[i].offsetLeft-tr.offsetLeft,behavior:"smooth"})}
+    tr.addEventListener("scroll",function(){window.requestAnimationFrame(paint)},{passive:true});
+    document.getElementById("cprev").addEventListener("click",function(){go(cur-1)});
+    document.getElementById("cnext").addEventListener("click",function(){go(cur+1)});
+    paint();
+  })();
   window.addEventListener("hashchange",function(){var k=fromHash();if(k)setService(k)});
 
   document.querySelectorAll("[data-service]").forEach(function(a){
